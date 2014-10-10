@@ -1,0 +1,543 @@
+/*--------------------------------------------------------------
+# Copyright (C) joomla-monster.com
+# License: http://www.joomla-monster.com/license.html Joomla-Monster Proprietary Use License
+# Website: http://www.joomla-monster.com
+# Support: info@joomla-monster.com
+---------------------------------------------------------------*/
+
+/* ==========================================================================
+   VARIABLES import
+   ========================================================================== */
+   
+@import "template_variables.less";
+@import "bootstrap_variables.less";
+
+/* ==========================================================================
+   MIXINS import
+   ========================================================================== */
+  
+@import "override/ltr/mixins.less";
+@import "../../../plugins/system/jmframework/includes/assets/template/bootstrap/less-ext/mixins-ext.less"; //JM extended mixins
+@import "template_mixins.less";
+
+/* ==========================================================================
+   DJ-MENU styles
+   ========================================================================== */
+  
+body .dj-main {
+  li.dj-up {
+    float: right;
+  }
+  li a.dj-up_a {
+    float: right;
+    border-right: 0;
+    border-left: 1px solid @JMtopmenuBorder;
+  }
+  li a.dj-up_a span {
+    float: right;
+  }
+  li:hover ul.dj-submenu, 
+  li.hover ul.dj-submenu {
+    left: auto;
+    right: -1px;
+  }
+  li:hover ul.dj-submenu li, 
+  li.hover ul.dj-submenu li {
+    float: right;
+  }
+  li ul.dj-submenu li a.dj-more:after {
+    right: auto;
+    left: 15px;
+    border-left: 0;
+    border-right: 6px solid @JMtopmenuFontColor;
+  }
+  li:hover li:hover > ul,
+  li.hover li.hover > ul {
+    left: auto;
+    right: 240px;
+  }
+  ul, 
+  li:hover > ul ul,
+  li.hover > ul ul {
+    left: auto;
+    right: 0;
+  }  
+}
+
+select.dj-select {
+  float: left !important;
+}
+
+/* ==========================================================================
+   DJIMAGESLIDER styles
+   ========================================================================== */
+
+//default
+.djslider {
+  direction: ltr;
+  .slide-desc-text {
+    text-align: right;
+  }
+  a.readmore {
+    &:after {
+      right: auto;
+      left: 0;
+      background-image: url("../images/li-white_rtl.png");
+
+    }
+  }
+  .navigation-container-custom {
+    right: auto !important;
+    left: 0 !important;
+    direction: rtl;
+  }
+}
+
+//slider1-ms 
+.slider1-ms .djslider {
+  .slide-desc-bg {
+    border: 1px solid @JMslider1Border;
+    border-right: none;
+  }
+  a.readmore {
+    float: left;
+  }
+  .navigation-container img.next-button {
+    right: auto !important;
+  }
+}
+
+/* ==========================================================================
+   LAYOUT styles
+   ========================================================================== */
+  
+// top-bar
+// --------------------------
+
+#jm-top-bar {
+  //login module
+  #login-form {
+    .control-group {
+      float: right;
+    }
+    input#modlgn-username,
+    input#modlgn-passwd {
+      border-right: 1px solid @JMtopbarBorder;
+      border-left: 0;
+    }
+    #form-login-submit .btn {
+      background: url("../images/li-gray_rtl.png") no-repeat center center;
+    }
+    .login-greeting,
+    .logout-button {
+      float: right;
+    }
+    .login-greeting {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+}
+
+#jm-top-bar1 .jm-module-raw {
+  float: right;
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+#jm-top-bar2 .jm-module-raw {
+  float: left;
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+// footer-mod
+// --------------------------
+
+#jm-footer-mod {
+  ul li {
+    background-position: right 5px;
+  }
+}
+
+#jm-back-top {
+  right: auto;
+  left: 0;
+  margin-right: 0;
+  margin-left: 50px;
+}
+
+/* ==========================================================================
+   JOOMLA COMPONENT styles
+   ========================================================================== */
+  
+//chosen
+.chzn-container .chzn-drop {
+  left: auto;
+  right: -9999px;
+}
+
+.chzn-container.chzn-with-drop .chzn-drop {
+  left: auto;
+  right: 0;
+}
+
+.chzn-container-single.chzn-container-single-nosearch .chzn-search {
+  left: auto;
+  right: -9999px;
+}
+  
+//all articles
+.article-info a {
+  display: inline-block;
+}
+
+//rating and voting
+.content_vote label {
+  margin: 0 0 0 5px;
+}
+
+// .badge {
+  // display: inline-block;
+// }
+
+//article categories
+.categories-list .collapse {
+  padding: 0 @JMbaseSpace 0 0;
+}
+
+//weblinks single category
+.weblink-count {
+  dt,
+  dd {
+    float: right;
+  }
+}
+
+
+/* ==========================================================================
+   JOOMLA COMPONENT styles
+   ========================================================================== */
+
+//article categories
+.categories-module li  {
+  .mod-articles-category-category a {
+    display: inline-block;
+  }
+}
+
+//article category
+.category-module li {
+  .mod-articles-category-category a {
+    display: inline-block;
+  }
+}
+
+//category blog
+.readmore {
+  text-align: left;
+}
+.pull-left.item-image {
+  margin-right: 0;
+  margin-left: @JMbaseSpace;
+}
+
+.pull-right.item-image {
+  margin-left: 0;
+  margin-right: @JMbaseSpace;
+}
+  
+//search component
+.phrases-box,
+  fieldset.only {
+    label {
+      margin-right: 0;
+      margin-left: 10px;
+  }
+}
+
+//article index
+.article-index {
+  margin-left: 0;
+  margin-right: @JMbaseSpace;
+}
+
+/* ==========================================================================
+   JOOMLA MODULES styles
+   ========================================================================== */
+  
+.span50 {
+  float: right !important;
+}  
+  
+//menu  
+.nav.menu {
+  li {
+    a img {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+    ul li {
+      a {
+        padding: 10px 20px 10px 0;
+        background: url("../images/li-menu_rtl.png") no-repeat right center;
+      }
+    }
+  }
+  > li {
+    &.parent > a {
+      padding-right: 20px;
+      padding-left: 40px;
+      &:after {
+        right: auto;
+        left: 30px;
+      }
+    }
+    > a:hover,
+    > a:focus,
+    &.active > a {
+      &:before {
+        left: auto;
+        right: 0;
+      }
+    }
+    > ul {
+      padding: 0 30px 0 0;
+      ul {
+        padding: 0 20px 0 0;
+      }
+    }
+  }
+}
+
+//archive
+.archive-module > li {
+  background-position: right center;
+}
+
+//search module
+.form-search {
+  label.finder {
+    padding: 0 0 0 10px;
+  }
+}
+
+//popular tags
+//popular tags
+.tagspopular.tagscloud {
+  .tag {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+} 
+
+//pagination
+.pagination ul > li.pagination-start {
+  > a,
+  > span.pagenav  {
+    background: url("../images/pagination-end.png") no-repeat center 12px;
+  }
+}
+
+.pagination ul > li.pagination-prev {
+  > a,
+  > span.pagenav  {
+    background: url("../images/pagination-next.png") no-repeat center 12px;
+  }
+}
+
+.pagination ul > li.pagination-end {
+  > a,
+  > span.pagenav  {
+    background: url("../images/pagination-start.png") no-repeat center 12px;
+  }
+}
+
+.pagination ul > li.pagination-next {
+  > a,
+  > span.pagenav  {
+    background: url("../images/pagination-prev.png") no-repeat center 12px;
+  }
+}
+
+/* ==========================================================================
+   CUSTOM HTML styles
+   ========================================================================== */
+
+//contact icons  
+.jm-contact-icons {
+  li {
+    float: right;
+    padding: 0 0 0 15px;
+    img {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+}
+
+//just few words module
+.jm-image-margin {
+  margin-left: @JMbaseSpace;
+  margin-right: -@JMbaseSpace;
+}
+
+.jm-custom-list {
+  li {
+    background: url("../images/li-custom_rtl.png") no-repeat right 9px;
+    padding: 9px 40px 9px 0;
+  }
+}
+
+.jm-custom-list.green {
+  li {
+    background: url("../images/li-custom-green_rtl.png") no-repeat right 9px;
+  }
+}
+
+//social icons
+.jm-socials {
+  a {
+    float: right;
+    margin: 0 0 10px 10px;
+  }
+}
+
+/* ==========================================================================
+   EDITOR styles
+   ========================================================================== */
+  
+/** numered blocks **/
+
+.jm-block {
+  padding: 0 60px 0 0;
+  span {
+    left: auto;
+    right: 0;
+  }
+}
+
+/** icon blocks **/
+
+p.jm-badge {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-calendar {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-chat {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-check {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-cloud {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-direction {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-divide {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-error {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-fire {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-flag {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-heart {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-home {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-info {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-list {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-mail {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-people {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-star {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+p.jm-stat {
+  padding-left: 0;
+  padding-right: 60px;
+  background-position: right top;
+}
+
+/** unordered lists **/
+
+//color list
+.jm-color-list {
+  li {
+    background-image: url("../images/li-color_rtl.png");
+  }
+}
+
+.jm-light-list {
+  li {
+    background-image: url("../images/li-white_rtl.png");
+  }
+}

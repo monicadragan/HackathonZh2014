@@ -1,0 +1,117 @@
+/*--------------------------------------------------------------
+# Copyright (C) joomla-monster.com
+# License: http://www.joomla-monster.com/license.html Joomla-Monster Proprietary Use License
+# Website: http://www.joomla-monster.com
+# Support: info@joomla-monster.com
+---------------------------------------------------------------*/
+
+/*********************** OFFLINE PAGE ***********************/ 
+
+body {
+	background: #f4f4f4;
+	font-size: 16px;
+	line-height: 1.375;
+	font-family: "Lato","sans-serif";
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	color: #898989;
+}
+
+.jm-allpage {
+	padding: 30px 0 0;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1170px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container-in {
+	background: #ffffff;
+	border: 1px solid #e7e7e7;
+	padding: 30px;
+	margin-bottom: 30px;
+}
+
+.wrapper > p {
+	margin: 0;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+	margin: 30px 0 0;
+	display: inline-block;
+}
+
+.input > p {
+	margin: 0;
+}
+
+h1 {
+    color: #2f2f2f;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.375;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+#form-login-username .inputbox,
+#form-login-password .inputbox,
+#form-login-secretkey .inputbox {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    color: #b0b0b0;
+    display: inline-block;
+    font-size: 16px;
+    font-style: italic;
+    height: 30px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
+
+#form-login-remember label {
+	margin: 0 1px;
+}
+
+#remember {
+	vertical-align: middle;
+}
+
+input, button, select, textarea {
+    font-family: "Lato","sans-serif";
+}
+
+.button {
+    background: #017eba;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 12px;
+    text-align: center;
+    text-transform: lowercase;
+    vertical-align: middle;
+}
+
+.button:hover {
+    background: #01a0ed;
+    color: #fff;
+    text-decoration: none;
+}
