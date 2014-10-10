@@ -1,0 +1,208 @@
+/*--------------------------------------------------------------
+# Copyright (C) joomla-monster.com
+# License: http://www.joomla-monster.com/license.html Joomla-Monster Proprietary Use License
+# Website: http://www.joomla-monster.com
+# Support: info@joomla-monster.com
+---------------------------------------------------------------*/
+
+/* ==========================================================================
+   VARIABLES import
+   ========================================================================== */
+
+@import "bootstrap_variables.less";  
+@import "template_variables.less";
+
+/* ==========================================================================
+   MIXINS import
+   ========================================================================== */
+  
+@import "override/ltr/mixins.less";
+@import "template_mixins.less";
+
+
+/* ==========================================================================
+   RESPONSIVE styles
+   ========================================================================== */
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  
+  .slider1-ms .djslider {
+    .slide-desc-text .slide-title {
+      margin-bottom: 10px;
+    }
+    a.readmore {
+      margin-top: 15px;
+    }
+    .navigation-container {
+      top: 0 !important;
+    }
+  }
+  .testimonials-ms .djslider .slide-text {
+    .jm-testimonial-desc {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+  }
+  
+}
+  
+@media (min-width: 768px) and (max-width: 979px) {
+  
+  .slider1-ms .djslider {
+    .slide-desc-text .slide-title {
+      margin-bottom: 10px;
+    }
+    a.readmore {
+      margin-top: 15px;
+    }
+    .navigation-container {
+      top: 0 !important;
+    }
+  }
+  .djslider {
+    .slide-desc-text .slide-title {
+      padding: 6px;
+      display: block;
+    }
+    .slide-text {
+      padding: 6px;
+    }
+    .slide-desc-text .slide-title,
+    .slide-desc-text .slide-title > a,
+    .slide-text,
+    .slide-text > a,
+    .slide-text > p {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+    a.readmore {
+      height: 32px;
+    }
+  }
+  .testimonials-ms .djslider .slide-text {
+    width: auto;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    .box-sizing (content-box);
+    .jm-testimonial-desc {
+      margin-top: 0;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+    .jm-testimonial-name {
+      font-size: 14px;
+      line-height: 20px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+    .jm-testimonial-subname {
+      display: none;
+    }
+  }
+  
+}
+ 
+@media (max-width: 767px) {
+  
+  .slider1-ms .djslider {
+    .slide-desc-text {
+      padding: @JMbaseSpace / 2;
+    }
+    .slide-desc-text .slide-title {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    a.readmore {
+      display: none;
+    }
+    .slide-desc-text .slide-title,
+    .slide-desc-text .slide-title > a,
+    .slide-text,
+    .slide-text > a,
+    .slide-text > p {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+    .navigation-container {
+      top: 0 !important;
+    }
+  }
+  .djslider {
+    .slide-desc-text .slide-title {
+      padding: 6px;
+      display: block;
+    }
+    .slide-text {
+      padding: 6px;
+    }
+    .slide-desc-text .slide-title,
+    .slide-desc-text .slide-title > a,
+    .slide-text,
+    .slide-text > a,
+    .slide-text > p {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+    a.readmore {
+      display: none;
+    }
+  }
+  .testimonials-ms .djslider .slide-text {
+    width: auto;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    .box-sizing (content-box);
+  }
+
+}
+
+@media (max-width: 480px) {
+  .slider1-ms .djslider,
+  .testimonials-ms .djslider {
+    .slide-text {
+      display: block;
+    }
+  }
+  .testimonials-ms .djslider .slide-text {
+    .jm-testimonial-desc {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+    .jm-testimonial-name {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .box-sizing (border-box);
+    }
+  }
+  .djslider {
+    .slide-text {
+      display: none;
+    }
+  }
+  
+}

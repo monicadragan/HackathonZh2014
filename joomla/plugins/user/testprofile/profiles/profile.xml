@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fields name="testprofile">
+    <fieldset name="testprofile"
+      label="PLG_USER_TESTPROFILE_SLIDER_LABEL">
+      <field
+        name="organization"
+        type="text"
+        id="organization"
+        label="PLG_USER_TESTPROFILE_FIELD_ORGANIZATION_LABEL" />
+    </fieldset>
+  </fields>
+</form>
