@@ -1,0 +1,208 @@
+/*--------------------------------------------------------------
+# Copyright (C) joomla-monster.com
+# License: http://www.joomla-monster.com/license.html Joomla-Monster Proprietary Use License
+# Website: http://www.joomla-monster.com
+# Support: info@joomla-monster.com
+---------------------------------------------------------------*/
+
+/* ==========================================================================
+   EDITOR styles
+   ========================================================================== */
+  
+/** typography article **/
+
+h3.jm-typo-title {
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 10px;
+  margin: 30px 0;
+  color: @JMarticleFontColor;
+}
+
+h3.jm-typo-title ~ pre,
+h3.jm-typo-title ~ div pre {
+  margin-bottom: 30px;
+  font-size: 13px;
+}
+
+/** numered blocks **/
+
+.jm-block {
+  margin: 10px 0;
+  padding: 0 0 0 60px;
+  position: relative;
+  min-height: 40px;
+  span {
+    background: @grayLight;
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    .border-radius (20px);
+    font-size: 18px;
+    color: @white;
+  }
+}
+
+.jm-block.second span {
+  background-color: @gray;
+}
+
+/** icon blocks **/
+
+p.jm-badge {
+  padding-left: 60px;
+  background: url("../images/icons/badge.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-calendar {
+  padding-left: 60px;
+  background: url("../images/icons/calendar.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-chat {
+  padding-left: 60px;
+  background: url("../images/icons/chat.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-check {
+  padding-left: 60px;
+  background: url("../images/icons/check.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-cloud {
+  padding-left: 60px;
+  background: url("../images/icons/cloud.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-direction {
+  padding-left: 60px;
+  background: url("../images/icons/direction.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-divide {
+  padding-left: 60px;
+  background: url("../images/icons/divide.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-error {
+  padding-left: 60px;
+  background: url("../images/icons/error.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-fire {
+  padding-left: 60px;
+  background: url("../images/icons/fire.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-flag {
+  padding-left: 60px;
+  background: url("../images/icons/flag.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-heart {
+  padding-left: 60px;
+  background: url("../images/icons/heart.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-home {
+  padding-left: 60px;
+  background: url("../images/icons/home.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-info {
+  padding-left: 60px;
+  background: url("../images/icons/info.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-list {
+  padding-left: 60px;
+  background: url("../images/icons/list.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-mail {
+  padding-left: 60px;
+  background: url("../images/icons/mail.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-people {
+  padding-left: 60px;
+  background: url("../images/icons/people.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-star {
+  padding-left: 60px;
+  background: url("../images/icons/star.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+p.jm-stat {
+  padding-left: 60px;
+  background: url("../images/icons/stat.png") no-repeat left top;
+  min-height: 40px;
+  margin: 5px 0 15px;
+}
+
+/** unordered lists **/
+
+//color list
+.jm-color-list {
+  li {
+    background-image: url("../images/li-color.png");
+  }
+}
+
+//white list
+.jm-light-list {
+  li {
+    background-image: url("../images/li-white.png");
+  }
+}
+
+/** ordered lists **/
+
+ol.jm-roman, 
+ol.jm-roman ol {
+  list-style-type: upper-roman;
+}
+
+ol.jm-alpha, 
+ol.jm-alpha ol {
+  list-style-type: lower-alpha;
+}

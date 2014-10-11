@@ -7341,7 +7341,7 @@ function masterSetup()
 		// Get the raw data
 		$raw = json_decode($json, true);
 
-		if (!empty($password) && (empty($raw)))
+		if (!empty($password) && (empty($password) || !isset($raw['factory'])))
 		{
 			die('###{"status":false,"message":"Invalid login"}###');
 		}

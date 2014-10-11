@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fields name="testprofile">
+    <fieldset name="testprofile"
+      label="PLG_USER_TESTPROFILE_SLIDER_LABEL">
+      <field
+        name="organization"
+        type="text"
+        id="organization"
+        label="PLG_USER_TESTPROFILE_FIELD_ORGANIZATION_LABEL" />
+        <field name="toppings" type="checkboxes">
+    <option value="anch">Anchovies</option>
+    <option value="chor">Chorizo</option>
+    <option value="on">Onions</option>
+    <option value="mush">Mushrooms</option>
+</field>
+<field name="myfile" type="filelist" default="" label="Select a file" description="" directory="administrator" filter="" exclude="" stripext="" />
+<field name="mylistvalue" type="groupedlist" default="" label="Select an option" description="">
+  <group label="Group 1">
+    <option value="0">Option 1</option>
+    <option value="1">Option 2</option>
+  </group>
+  <group label="Group 2">
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+  </group>
+  <option value="5">Option 5</option>
+  <option value="6">Option 6</option>
+</field>
+<field name="mylistvalue" type="list" default="" label="Select an option" description="">
+  <option value="0">Option 1</option>
+  <option value="1">Option 2</option>
+</field>
+<field name="mymenuitem" type="menuitem" default="45" label="Select a menu item" description="Select a menu item" />
+    </fieldset>
+    <field name="myradiovalue" type="radio" default="0" label="Select an option" description="">
+  <option value="0">1</option>
+  <option value="1">2</option>
+</field>
+
+<field name="myfield" type="sql" default="10" label="Select an article" query="SELECT id, title FROM #__content" key_field="id" value_field="title" required="true">
+<option value="">Please select your option</option>
+</field>
+  </fields>
+</form>
