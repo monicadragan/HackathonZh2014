@@ -118,7 +118,7 @@ for ($i=0; $i<$num; $i++) {
     }
 }
 
-//compute scalar product with the query and choose the heighest score
+
 
 ?>
 
