@@ -18,6 +18,27 @@
 
 <?php
 
+$query=$_POST["query"];
+
+echo "Your query is: $query <br/>";
+
+$words = array();
+
+$delim = ' \n\t,.!?:;';
+
+$tok = strtok($query, $delim);
+array_push($words, $tok);
+while ($tok != false) {
+    array_push($words, $tok);
+    $tok = strtok($delim);
+}
+
+print_r ($words);
+
+?>
+
+<?php
+
 $db=mysql_connect("localhost","interq","qinter543");
 if(!$db)
 {
