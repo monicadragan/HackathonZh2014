@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.6
+-- version 3.4.10.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generato il: Ott 11, 2014 alle 22:37
--- Versione del server: 5.5.33
--- Versione PHP: 5.5.3
+-- Generation Time: Oct 11, 2014 at 10:58 PM
+-- Server version: 5.5.38
+-- PHP Version: 5.3.10-1ubuntu3.14
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `hackzurich`
@@ -17,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_assets`
+-- Table structure for table `b1978_assets`
 --
 
-CREATE TABLE `b1978_assets` (
+CREATE TABLE IF NOT EXISTS `b1978_assets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set parent.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
@@ -36,7 +42,7 @@ CREATE TABLE `b1978_assets` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=403 ;
 
 --
--- Dump dei dati per la tabella `b1978_assets`
+-- Dumping data for table `b1978_assets`
 --
 
 INSERT INTO `b1978_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
@@ -251,10 +257,10 @@ INSERT INTO `b1978_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_associations`
+-- Table structure for table `b1978_associations`
 --
 
-CREATE TABLE `b1978_associations` (
+CREATE TABLE IF NOT EXISTS `b1978_associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) NOT NULL COMMENT 'The context of the associated item.',
   `key` char(32) NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
@@ -265,10 +271,10 @@ CREATE TABLE `b1978_associations` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_banners`
+-- Table structure for table `b1978_banners`
 --
 
-CREATE TABLE `b1978_banners` (
+CREATE TABLE IF NOT EXISTS `b1978_banners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL DEFAULT '0',
   `type` int(11) NOT NULL DEFAULT '0',
@@ -314,10 +320,10 @@ CREATE TABLE `b1978_banners` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_banner_clients`
+-- Table structure for table `b1978_banner_clients`
 --
 
-CREATE TABLE `b1978_banner_clients` (
+CREATE TABLE IF NOT EXISTS `b1978_banner_clients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `contact` varchar(255) NOT NULL DEFAULT '',
@@ -340,10 +346,10 @@ CREATE TABLE `b1978_banner_clients` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_banner_tracks`
+-- Table structure for table `b1978_banner_tracks`
 --
 
-CREATE TABLE `b1978_banner_tracks` (
+CREATE TABLE IF NOT EXISTS `b1978_banner_tracks` (
   `track_date` datetime NOT NULL,
   `track_type` int(10) unsigned NOT NULL,
   `banner_id` int(10) unsigned NOT NULL,
@@ -357,10 +363,10 @@ CREATE TABLE `b1978_banner_tracks` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_categories`
+-- Table structure for table `b1978_categories`
 --
 
-CREATE TABLE `b1978_categories` (
+CREATE TABLE IF NOT EXISTS `b1978_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -399,7 +405,7 @@ CREATE TABLE `b1978_categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=97 ;
 
 --
--- Dump dei dati per la tabella `b1978_categories`
+-- Dumping data for table `b1978_categories`
 --
 
 INSERT INTO `b1978_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
@@ -428,10 +434,10 @@ INSERT INTO `b1978_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `le
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_contact_details`
+-- Table structure for table `b1978_contact_details`
 --
 
-CREATE TABLE `b1978_contact_details` (
+CREATE TABLE IF NOT EXISTS `b1978_contact_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -487,7 +493,7 @@ CREATE TABLE `b1978_contact_details` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Dump dei dati per la tabella `b1978_contact_details`
+-- Dumping data for table `b1978_contact_details`
 --
 
 INSERT INTO `b1978_contact_details` (`id`, `name`, `alias`, `con_position`, `address`, `suburb`, `state`, `country`, `postcode`, `telephone`, `fax`, `misc`, `image`, `email_to`, `default_con`, `published`, `checked_out`, `checked_out_time`, `ordering`, `params`, `user_id`, `catid`, `access`, `mobile`, `webpage`, `sortname1`, `sortname2`, `sortname3`, `language`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `metakey`, `metadesc`, `metadata`, `featured`, `xreference`, `publish_up`, `publish_down`, `version`, `hits`) VALUES
@@ -497,10 +503,10 @@ INSERT INTO `b1978_contact_details` (`id`, `name`, `alias`, `con_position`, `add
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_content`
+-- Table structure for table `b1978_content`
 --
 
-CREATE TABLE `b1978_content` (
+CREATE TABLE IF NOT EXISTS `b1978_content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(255) NOT NULL DEFAULT '',
@@ -543,11 +549,11 @@ CREATE TABLE `b1978_content` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=136 ;
 
 --
--- Dump dei dati per la tabella `b1978_content`
+-- Dumping data for table `b1978_content`
 --
 
 INSERT INTO `b1978_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(73, 182, 'Subpage', 'subpage', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in augue mollis, semper est ac, aliquet turpis. Vestibulum ut dapibus dolor. Vestibulum commodo, ligula non iaculis tristique, erat sem luctus sapien, sed auctor felis nisi sed mauris. Maecenas eu iaculis tortor, ac volutpat ipsum. In eget lacus erat. Nullam nec magna tellus. Vestibulum rutrum velit et nulla tristique, ac sodales risus tempor. Phasellus sed nisi ut nibh accumsan commodo sed a libero. In ut semper felis, a vestibulum mi. Ut et lacus lectus. Vivamus tempus erat et augue bibendum posuere. In mauris metus, ultrices vel vulputate nec, dictum eget nulla. Etiam ac est metus. Mauris at orci pretium, congue erat vel, vulputate eros. In posuere venenatis lacinia. Mauris aliquam faucibus velit, vitae cursus tellus aliquam vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in augue mollis, semper est ac, aliquet turpis. Vestibulum ut dapibus dolor. Mauris in augue mollis, semper est ac, aliquet turpis. Vestibulum ut dapibus dolor.</p>', '', 1, 78, '2014-04-28 14:34:25', 554, '', '2014-05-15 14:47:05', 164, 0, '0000-00-00 00:00:00', '2014-04-28 14:34:25', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 6, 8, '', '', 1, 4321, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(73, 182, 'Subpage', 'subpage', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in augue mollis, semper est ac, aliquet turpis. Vestibulum ut dapibus dolor. Vestibulum commodo, ligula non iaculis tristique, erat sem luctus sapien, sed auctor felis nisi sed mauris. Maecenas eu iaculis tortor, ac volutpat ipsum. In eget lacus erat. Nullam nec magna tellus. Vestibulum rutrum velit et nulla tristique, ac sodales risus tempor. Phasellus sed nisi ut nibh accumsan commodo sed a libero. In ut semper felis, a vestibulum mi. Ut et lacus lectus. Vivamus tempus erat et augue bibendum posuere. In mauris metus, ultrices vel vulputate nec, dictum eget nulla. Etiam ac est metus. Mauris at orci pretium, congue erat vel, vulputate eros. In posuere venenatis lacinia. Mauris aliquam faucibus velit, vitae cursus tellus aliquam vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in augue mollis, semper est ac, aliquet turpis. Vestibulum ut dapibus dolor. Mauris in augue mollis, semper est ac, aliquet turpis. Vestibulum ut dapibus dolor.</p>', '', 1, 78, '2014-04-28 14:34:25', 554, '', '2014-05-15 14:47:05', 164, 0, '0000-00-00 00:00:00', '2014-04-28 14:34:25', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 6, 8, '', '', 1, 4326, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (87, 276, 'Typography', 'typography', '<h3 class="jm-typo-title">Image Borders</h3>\r\n<div class="row-fluid">\r\n<div class="span4">\r\n<pre>&lt;img class="img-rounded" src="image.jpg" /&gt;</pre>\r\n<div style="text-align: center;"><img class="img-rounded" src="images/bootstrap_sample/sample140x140.png" alt="Typography" border="0" /></div>\r\n<p> </p>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;img class="img-circle" src="image.jpg" /&gt;</pre>\r\n<div style="text-align: center;"><img class="img-circle" src="images/bootstrap_sample/sample140x140.png" alt="Typography" border="0" /></div>\r\n<p> </p>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;img class="img-polaroid" src="image.jpg" /&gt;</pre>\r\n<div style="text-align: center;"><img class="img-polaroid" src="images/bootstrap_sample/sample140x140.png" alt="Typography" border="0" /></div>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Headings</h3>\r\n<div class="row-fluid">\r\n<div class="span6">\r\n<h1>This is Heading One (h1)</h1>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris convallis porta lacinia bibendum felis.</p>\r\n<br />\r\n<h2>This is Heading Two (h2)</h2>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris convallis porta lacinia bibendum felis.</p>\r\n<br />\r\n<h3>This is Heading Three (h3)</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris convallis porta lacinia bibendum felis.</p>\r\n</div>\r\n<div class="span6">\r\n<h4>This is Heading Four (h4)</h4>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris convallis porta lacinia bibendum felis.</p>\r\n<br />\r\n<h5>This is Heading Five (h5)</h5>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris convallis porta lacinia bibendum felis.</p>\r\n<br />\r\n<h6>This is Heading Six (h6)</h6>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris convallis porta lacinia bibendum felis.</p>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Numered blocks</h3>\r\n<div class="row-fluid">\r\n<div class="span6">\r\n<pre>&lt;p class="jm-block"&gt;&lt;span class="jm"&gt;01&lt;/span&gt;Text goes here&lt;/p&gt;</pre>\r\n<p class="jm-block"><span class="jm">01</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris.</p>\r\n<p class="jm-block"><span class="jm">02</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris.</p>\r\n<p class="jm-block"><span class="jm">03</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris.</p>\r\n</div>\r\n<div class="span6">\r\n<pre>&lt;p class="jm-block second"&gt;&lt;span class="jm"&gt;a&lt;/span&gt;Text goes here&lt;/p&gt;</pre>\r\n<p class="jm-block second"><span class="jm">a</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris.</p>\r\n<p class="jm-block second"><span class="jm">b</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris.</p>\r\n<p class="jm-block second"><span class="jm">c</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis viverra leo sed turpis convallis sit amet condimentum diam vehicula. Morbi suscipit nisl odio, nec sodales tellus. Aenean quis sapien suscipit mauris.</p>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Colored Blocks</h3>\r\n<div class="row-fluid">\r\n<div class="span6">\r\n<div class="alert">&lt;div class="alert"&gt;Text goes here&lt;/div&gt;</div>\r\n<div class="alert alert-error">&lt;div class="alert alert-error"&gt;Text goes here&lt;/div&gt;</div>\r\n</div>\r\n<div class="span6">\r\n<div class="alert alert-success">&lt;div class="alert alert-success"&gt;Text goes here&lt;/div&gt;</div>\r\n<div class="alert alert-info">&lt;div class="alert alert-info"&gt;Text goes here&lt;/div&gt;</div>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Icon blocks</h3>\r\n<div class="row-fluid">\r\n<div class="span6">\r\n<p class="jm-badge">&lt;p class="jm-badge" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-calendar">&lt;p class="jm-calendar" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-chat">&lt;p class="jm-chat" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-check">&lt;p class="jm-check" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-cloud">&lt;p class="jm-cloud" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-direction">&lt;p class="jm-direction" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-divide">&lt;p class="jm-divide" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-error">&lt;p class="jm-error" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-fire">&lt;p class="jm-fire" &gt;Text goes here&lt;/p&gt;</p>\r\n</div>\r\n<div class="span6">\r\n<p class="jm-flag">&lt;p class="jm-flag" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-heart">&lt;p class="jm-heart" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-home">&lt;p class="jm-home" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-info">&lt;p class="jm-info" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-list">&lt;p class="jm-list" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-mail">&lt;p class="jm-mail" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-people">&lt;p class="jm-people" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-star">&lt;p class="jm-star" &gt;Text goes here&lt;/p&gt;</p>\r\n<p class="jm-stat">&lt;p class="jm-stat" &gt;Text goes here&lt;/p&gt;</p>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Blockquote</h3>\r\n<div class="row-fluid">\r\n<div class="span12">\r\n<pre>&lt;blockquote&gt;<br />&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;<br />&lt;small&gt;John Doe&lt;/small&gt;<br />&lt;/blockquote&gt;</pre>\r\n<blockquote>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>\r\n<small>John Doe</small></blockquote>\r\n</div>\r\n<div class="span12">\r\n<pre>&lt;blockquote class="pull-right"&gt;<br />&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;<br />&lt;small&gt;John Doe&lt;/small&gt;<br />&lt;/blockquote&gt;</pre>\r\n<blockquote class="pull-right">\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>\r\n<small>John Doe</small></blockquote>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Unordered lists</h3>\r\n<div class="row-fluid" style="margin-bottom: 30px;">\r\n<div class="span4">\r\n<pre>&lt;ul&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ul&gt;</pre>\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;ul class="jm-color-list"&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ul&gt;</pre>\r\n<ul class="jm-color-list">\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;ul class="jm-light-list"&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ul&gt;</pre>\r\n<ul class="jm-light-list">\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</div>\r\n</div>\r\n<div class="row-fluid">\r\n<div class="span6">\r\n<pre>&lt;ul class="jm-custom-list"&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ul&gt;</pre>\r\n<ul class="jm-custom-list">\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</div>\r\n<div class="span6">\r\n<pre>&lt;ul class="jm-custom-list green"&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ul&gt;</pre>\r\n<ul class="jm-custom-list green">\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ul>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Ordered lists</h3>\r\n<div class="row-fluid">\r\n<div class="span4">\r\n<pre>&lt;ol&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ol&gt;</pre>\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;ol class="jm-roman"&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ol&gt;</pre>\r\n<ol class="jm-roman">\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;ol class="jm-alpha"&gt;<br />&lt;-- list goes here --&gt;<br />&lt;/ol&gt;</pre>\r\n<ol class="jm-alpha">\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum\r\n<ol>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n<li>Duis tincidunt nunc sit amet ipsum</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Read More Button</h3>\r\n<pre>&lt;p class="readmore"&gt;&lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;&lt;/p&gt;</pre>\r\n<p class="readmore"><a class="btn" href="#">Read more</a></p>\r\n<h3 class="jm-typo-title">IcoMoon Font</h3>\r\n<div>\r\n<pre>&lt;span class="icon-joomla"&gt;&amp;nbsp&lt;/span&gt;</pre>\r\n</div>\r\n<div class="row-fluid">\r\n<div class="span4">\r\n<div style="padding: 2px 0;"><span class="icon-joomla"> </span> .icon-joomla</div>\r\n<div style="padding: 2px 0;"><span class="icon-chevron-up"> </span> .icon-chevron-up</div>\r\n<div style="padding: 2px 0;"><span class="icon-uparrow"> </span> .icon-uparrow</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-up"> </span> .icon-arrow-up</div>\r\n<div style="padding: 2px 0;"><span class="icon-chevron-right"> </span> .icon-chevron-right</div>\r\n<div style="padding: 2px 0;"><span class="icon-rightarrow"> </span> .icon-rightarrow</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-right"> </span> .icon-arrow-right</div>\r\n<div style="padding: 2px 0;"><span class="icon-chevron-down"> </span> .icon-chevron-down</div>\r\n<div style="padding: 2px 0;"><span class="icon-downarrow"> </span> .icon-downarrow</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-down"> </span> .icon-arrow-down</div>\r\n<div style="padding: 2px 0;"><span class="icon-chevron-left"> </span> .icon-chevron-left</div>\r\n<div style="padding: 2px 0;"><span class="icon-leftarrow"> </span> .icon-leftarrow</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-left"> </span> .icon-arrow-left</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-first"> </span> .icon-arrow-first</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-last"> </span> .icon-arrow-last</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-up-2"> </span> .icon-arrow-up-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-right-2"> </span> .icon-arrow-right-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-down-2"> </span> .icon-arrow-down-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-left-2"> </span> .icon-arrow-left-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-up-3"> </span> .icon-arrow-up-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-right-3"> </span> .icon-arrow-right-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-down-3"> </span> .icon-arrow-down-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-left-3"> </span> .icon-arrow-left-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-menu-2"> </span> .icon-menu-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-up-4"> </span> .icon-arrow-up-4</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-right-4"> </span> .icon-arrow-right-4</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-down-4"> </span> .icon-arrow-down-4</div>\r\n<div style="padding: 2px 0;"><span class="icon-arrow-left-4"> </span> .icon-arrow-left-4</div>\r\n<div style="padding: 2px 0;"><span class="icon-share"> </span> .icon-share</div>\r\n<div style="padding: 2px 0;"><span class="icon-redo"> </span> .icon-redo</div>\r\n<div style="padding: 2px 0;"><span class="icon-undo"> </span> .icon-undo</div>\r\n<div style="padding: 2px 0;"><span class="icon-forward-2"> </span> .icon-forward-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-backward-2"> </span> .icon-backward-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-reply"> </span> .icon-reply</div>\r\n<div style="padding: 2px 0;"><span class="icon-unblock"> </span> .icon-unblock</div>\r\n<div style="padding: 2px 0;"><span class="icon-refresh"> </span> .icon-refresh</div>\r\n<div style="padding: 2px 0;"><span class="icon-redo-2"> </span> .icon-redo-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-undo-2"> </span> .icon-undo-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-move"> </span> .icon-move</div>\r\n<div style="padding: 2px 0;"><span class="icon-expand"> </span> .icon-expand</div>\r\n<div style="padding: 2px 0;"><span class="icon-contract"> </span> .icon-contract</div>\r\n<div style="padding: 2px 0;"><span class="icon-expand-2"> </span> .icon-expand-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-contract-2"> </span> .icon-contract-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-play"> </span> .icon-play</div>\r\n<div style="padding: 2px 0;"><span class="icon-pause"> </span> .icon-pause</div>\r\n<div style="padding: 2px 0;"><span class="icon-stop"> </span> .icon-stop</div>\r\n<div style="padding: 2px 0;"><span class="icon-previous"> </span> .icon-previous</div>\r\n<div style="padding: 2px 0;"><span class="icon-backward"> </span> .icon-backward</div>\r\n<div style="padding: 2px 0;"><span class="icon-next"> </span> .icon-next</div>\r\n<div style="padding: 2px 0;"><span class="icon-forward"> </span> .icon-forward</div>\r\n<div style="padding: 2px 0;"><span class="icon-first"> </span> .icon-first</div>\r\n<div style="padding: 2px 0;"><span class="icon-last"> </span> .icon-last</div>\r\n<div style="padding: 2px 0;"><span class="icon-play-circle"> </span> .icon-play-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-pause-circle"> </span> .icon-pause-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-stop-circle"> </span> .icon-stop-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-backward-circle"> </span> .icon-backward-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-forward-circle"> </span> .icon-forward-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-loop"> </span> .icon-loop</div>\r\n<div style="padding: 2px 0;"><span class="icon-shuffle"> </span> .icon-shuffle</div>\r\n<div style="padding: 2px 0;"><span class="icon-search"> </span> .icon-search</div>\r\n<div style="padding: 2px 0;"><span class="icon-zoom-in"> </span> .icon-zoom-in</div>\r\n<div style="padding: 2px 0;"><span class="icon-zoom-out"> </span> .icon-zoom-out</div>\r\n<div style="padding: 2px 0;"><span class="icon-apply"> </span> .icon-apply</div>\r\n<div style="padding: 2px 0;"><span class="icon-edit"> </span> .icon-edit</div>\r\n<div style="padding: 2px 0;"><span class="icon-pencil"> </span> .icon-pencil</div>\r\n<div style="padding: 2px 0;"><span class="icon-pencil-2"> </span> .icon-pencil-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-brush"> </span> .icon-brush</div>\r\n<div style="padding: 2px 0;"><span class="icon-save-new"> </span> .icon-save-new</div>\r\n<div style="padding: 2px 0;"><span class="icon-plus-2"> </span> .icon-plus-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-ban-circle"> </span> .icon-ban-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-minus-sign"> </span> .icon-minus-sign</div>\r\n<div style="padding: 2px 0;"><span class="icon-minus-2"> </span> .icon-minus-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-delete"> </span> .icon-delete</div>\r\n<div style="padding: 2px 0;"><span class="icon-remove"> </span> .icon-remove</div>\r\n<div style="padding: 2px 0;"><span class="icon-cancel-2"> </span> .icon-cancel-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-publish"> </span> .icon-publish</div>\r\n<div style="padding: 2px 0;"><span class="icon-save"> </span> .icon-save</div>\r\n<div style="padding: 2px 0;"><span class="icon-ok"> </span> .icon-ok</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkmark"> </span> .icon-checkmark</div>\r\n<div style="padding: 2px 0;"><span class="icon-new"> </span> .icon-new</div>\r\n<div style="padding: 2px 0;"><span class="icon-plus"> </span> .icon-plus</div>\r\n<div style="padding: 2px 0;"><span class="icon-plus-circle"> </span> .icon-plus-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-minus"> </span> .icon-minus</div>\r\n<div style="padding: 2px 0;"><span class="icon-not-ok"> </span> .icon-not-ok</div>\r\n<div style="padding: 2px 0;"><span class="icon-minus-circle"> </span> .icon-minus-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-unpublish"> </span> .icon-unpublish</div>\r\n<div style="padding: 2px 0;"><span class="icon-cancel"> </span> .icon-cancel</div>\r\n<div style="padding: 2px 0;"><span class="icon-cancel-circle"> </span> .icon-cancel-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkmark-2"> </span> .icon-checkmark-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkmark-circle"> </span> .icon-checkmark-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-info"> </span> .icon-info</div>\r\n<div style="padding: 2px 0;"><span class="icon-info-2"> </span> .icon-info-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-info-circle"> </span> .icon-info-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-question"> </span> .icon-question</div>\r\n<div style="padding: 2px 0;"><span class="icon-question-sign"> </span> .icon-question-sign</div>\r\n<div style="padding: 2px 0;"><span class="icon-help"> </span> .icon-help</div>\r\n<div style="padding: 2px 0;"><span class="icon-question-2"> </span> .icon-question-2</div>\r\n</div>\r\n<div class="span4">\r\n<div style="padding: 2px 0;"><span class="icon-question-circle"> </span> .icon-question-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-notification"> </span> .icon-notification</div>\r\n<div style="padding: 2px 0;"><span class="icon-notification-2"> </span> .icon-notification-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-notification-circle"> </span> .icon-notification-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-pending"> </span> .icon-pending</div>\r\n<div style="padding: 2px 0;"><span class="icon-warning"> </span> .icon-warning</div>\r\n<div style="padding: 2px 0;"><span class="icon-warning-2"> </span> .icon-warning-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-warning-circle"> </span> .icon-warning-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkbox-unchecked"> </span> .icon-checkbox-unchecked</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkin"> </span> .icon-checkin</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkbox"> </span> .icon-checkbox</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkbox-checked"> </span> .icon-checkbox-checked</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkbox-partial"> </span> .icon-checkbox-partial</div>\r\n<div style="padding: 2px 0;"><span class="icon-square"> </span> .icon-square</div>\r\n<div style="padding: 2px 0;"><span class="icon-radio-unchecked"> </span> .icon-radio-unchecked</div>\r\n<div style="padding: 2px 0;"><span class="icon-radio-checked"> </span> .icon-radio-checked</div>\r\n<div style="padding: 2px 0;"><span class="icon-circle"> </span> .icon-circle</div>\r\n<div style="padding: 2px 0;"><span class="icon-signup"> </span> .icon-signup</div>\r\n<div style="padding: 2px 0;"><span class="icon-grid"> </span> .icon-grid</div>\r\n<div style="padding: 2px 0;"><span class="icon-grid-view"> </span> .icon-grid-view</div>\r\n<div style="padding: 2px 0;"><span class="icon-grid-2"> </span> .icon-grid-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-grid-view-2"> </span> .icon-grid-view-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-menu"> </span> .icon-menu</div>\r\n<div style="padding: 2px 0;"><span class="icon-list"> </span> .icon-list</div>\r\n<div style="padding: 2px 0;"><span class="icon-list-view"> </span> .icon-list-view</div>\r\n<div style="padding: 2px 0;"><span class="icon-list-2"> </span> .icon-list-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-menu-3"> </span> .icon-menu-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-open"> </span> .icon-folder-open</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder"> </span> .icon-folder</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-close"> </span> .icon-folder-close</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-2"> </span> .icon-folder-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-plus"> </span> .icon-folder-plus</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-minus"> </span> .icon-folder-minus</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-3"> </span> .icon-folder-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-plus-2"> </span> .icon-folder-plus-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-folder-remove"> </span> .icon-folder-remove</div>\r\n<div style="padding: 2px 0;"><span class="icon-file"> </span> .icon-file</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-2"> </span> .icon-file-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-add"> </span> .icon-file-add</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-plus"> </span> .icon-file-plus</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-remove"> </span> .icon-file-remove</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-minus"> </span> .icon-file-minus</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-check"> </span> .icon-file-check</div>\r\n<div style="padding: 2px 0;"><span class="icon-file-remove"> </span> .icon-file-remove</div>\r\n<div style="padding: 2px 0;"><span class="icon-save-copy"> </span> .icon-save-copy</div>\r\n<div style="padding: 2px 0;"><span class="icon-copy"> </span> .icon-copy</div>\r\n<div style="padding: 2px 0;"><span class="icon-stack"> </span> .icon-stack</div>\r\n<div style="padding: 2px 0;"><span class="icon-tree"> </span> .icon-tree</div>\r\n<div style="padding: 2px 0;"><span class="icon-tree-2"> </span> .icon-tree-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-paragraph-left"> </span> .icon-paragraph-left</div>\r\n<div style="padding: 2px 0;"><span class="icon-paragraph-center"> </span> .icon-paragraph-center</div>\r\n<div style="padding: 2px 0;"><span class="icon-paragraph-right"> </span> .icon-paragraph-right</div>\r\n<div style="padding: 2px 0;"><span class="icon-paragraph-justify"> </span> .icon-paragraph-justify</div>\r\n<div style="padding: 2px 0;"><span class="icon-screen"> </span> .icon-screen</div>\r\n<div style="padding: 2px 0;"><span class="icon-tablet"> </span> .icon-tablet</div>\r\n<div style="padding: 2px 0;"><span class="icon-mobile"> </span> .icon-mobile</div>\r\n<div style="padding: 2px 0;"><span class="icon-box-add"> </span> .icon-box-add</div>\r\n<div style="padding: 2px 0;"><span class="icon-box-remove"> </span> .icon-box-remove</div>\r\n<div style="padding: 2px 0;"><span class="icon-download"> </span> .icon-download</div>\r\n<div style="padding: 2px 0;"><span class="icon-upload"> </span> .icon-upload</div>\r\n<div style="padding: 2px 0;"><span class="icon-home"> </span> .icon-home</div>\r\n<div style="padding: 2px 0;"><span class="icon-home-2"> </span> .icon-home-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-out-2"> </span> .icon-out-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-new-tab"> </span> .icon-new-tab</div>\r\n<div style="padding: 2px 0;"><span class="icon-out-3"> </span> .icon-out-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-new-tab-2"> </span> .icon-new-tab-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-link"> </span> .icon-link</div>\r\n<div style="padding: 2px 0;"><span class="icon-picture"> </span> .icon-picture</div>\r\n<div style="padding: 2px 0;"><span class="icon-image"> </span> .icon-image</div>\r\n<div style="padding: 2px 0;"><span class="icon-pictures"> </span> .icon-pictures</div>\r\n<div style="padding: 2px 0;"><span class="icon-images"> </span> .icon-images</div>\r\n<div style="padding: 2px 0;"><span class="icon-palette"> </span> .icon-palette</div>\r\n<div style="padding: 2px 0;"><span class="icon-color-palette"> </span> .icon-color-palette</div>\r\n<div style="padding: 2px 0;"><span class="icon-camera"> </span> .icon-camera</div>\r\n<div style="padding: 2px 0;"><span class="icon-camera-2"> </span> .icon-camera-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-video"> </span> .icon-video</div>\r\n<div style="padding: 2px 0;"><span class="icon-play-2"> </span> .icon-play-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-video-2"> </span> .icon-video-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-youtube"> </span> .icon-youtube</div>\r\n<div style="padding: 2px 0;"><span class="icon-music"> </span> .icon-music</div>\r\n<div style="padding: 2px 0;"><span class="icon-user"> </span> .icon-user</div>\r\n<div style="padding: 2px 0;"><span class="icon-users"> </span> .icon-users</div>\r\n<div style="padding: 2px 0;"><span class="icon-vcard"> </span> .icon-vcard</div>\r\n<div style="padding: 2px 0;"><span class="icon-address"> </span> .icon-address</div>\r\n<div style="padding: 2px 0;"><span class="icon-share-alt"> </span> .icon-share-alt</div>\r\n<div style="padding: 2px 0;"><span class="icon-out"> </span> .icon-out</div>\r\n<div style="padding: 2px 0;"><span class="icon-enter"> </span> .icon-enter</div>\r\n<div style="padding: 2px 0;"><span class="icon-exit"> </span> .icon-exit</div>\r\n<div style="padding: 2px 0;"><span class="icon-comment"> </span> .icon-comment</div>\r\n<div style="padding: 2px 0;"><span class="icon-comments"> </span> .icon-comments</div>\r\n<div style="padding: 2px 0;"><span class="icon-comments-2"> </span> .icon-comments-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-quote"> </span> .icon-quote</div>\r\n<div style="padding: 2px 0;"><span class="icon-quotes-left"> </span> .icon-quotes-left</div>\r\n<div style="padding: 2px 0;"><span class="icon-quote-2"> </span> .icon-quote-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-quotes-right"> </span> .icon-quotes-right</div>\r\n<div style="padding: 2px 0;"><span class="icon-quote-3"> </span> .icon-quote-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-bubble-quote"> </span> .icon-bubble-quote</div>\r\n</div>\r\n<div class="span4">\r\n<div style="padding: 2px 0;"><span class="icon-phone"> </span> .icon-phone</div>\r\n<div style="padding: 2px 0;"><span class="icon-phone-2"> </span> .icon-phone-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-envelope"> </span> .icon-envelope</div>\r\n<div style="padding: 2px 0;"><span class="icon-mail"> </span> .icon-mail</div>\r\n<div style="padding: 2px 0;"><span class="icon-envelope-opened"> </span> .icon-envelope-opened</div>\r\n<div style="padding: 2px 0;"><span class="icon-mail-2"> </span> .icon-mail-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-unarchive"> </span> .icon-unarchive</div>\r\n<div style="padding: 2px 0;"><span class="icon-drawer"> </span> .icon-drawer</div>\r\n<div style="padding: 2px 0;"><span class="icon-archive"> </span> .icon-archive</div>\r\n<div style="padding: 2px 0;"><span class="icon-drawer-2"> </span> .icon-drawer-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-briefcase"> </span> .icon-briefcase</div>\r\n<div style="padding: 2px 0;"><span class="icon-tag"> </span> .icon-tag</div>\r\n<div style="padding: 2px 0;"><span class="icon-tag-2"> </span> .icon-tag-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-tags"> </span> .icon-tags</div>\r\n<div style="padding: 2px 0;"><span class="icon-tags-2"> </span> .icon-tags-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-options"> </span> .icon-options</div>\r\n<div style="padding: 2px 0;"><span class="icon-cog"> </span> .icon-cog</div>\r\n<div style="padding: 2px 0;"><span class="icon-cogs"> </span> .icon-cogs</div>\r\n<div style="padding: 2px 0;"><span class="icon-screwdriver"> </span> .icon-screwdriver</div>\r\n<div style="padding: 2px 0;"><span class="icon-tools"> </span> .icon-tools</div>\r\n<div style="padding: 2px 0;"><span class="icon-wrench"> </span> .icon-wrench</div>\r\n<div style="padding: 2px 0;"><span class="icon-equalizer"> </span> .icon-equalizer</div>\r\n<div style="padding: 2px 0;"><span class="icon-dashboard"> </span> .icon-dashboard</div>\r\n<div style="padding: 2px 0;"><span class="icon-switch"> </span> .icon-switch</div>\r\n<div style="padding: 2px 0;"><span class="icon-filter"> </span> .icon-filter</div>\r\n<div style="padding: 2px 0;"><span class="icon-purge"> </span> .icon-purge</div>\r\n<div style="padding: 2px 0;"><span class="icon-trash"> </span> .icon-trash</div>\r\n<div style="padding: 2px 0;"><span class="icon-checkedout"> </span> .icon-checkedout</div>\r\n<div style="padding: 2px 0;"><span class="icon-lock"> </span> .icon-lock</div>\r\n<div style="padding: 2px 0;"><span class="icon-locked"> </span> .icon-locked</div>\r\n<div style="padding: 2px 0;"><span class="icon-unlock"> </span> .icon-unlock</div>\r\n<div style="padding: 2px 0;"><span class="icon-key"> </span> .icon-key</div>\r\n<div style="padding: 2px 0;"><span class="icon-support"> </span> .icon-support</div>\r\n<div style="padding: 2px 0;"><span class="icon-database"> </span> .icon-database</div>\r\n<div style="padding: 2px 0;"><span class="icon-scissors"> </span> .icon-scissors</div>\r\n<div style="padding: 2px 0;"><span class="icon-health"> </span> .icon-health</div>\r\n<div style="padding: 2px 0;"><span class="icon-wand"> </span> .icon-wand</div>\r\n<div style="padding: 2px 0;"><span class="icon-eye-open"> </span> .icon-eye-open</div>\r\n<div style="padding: 2px 0;"><span class="icon-eye"> </span> .icon-eye</div>\r\n<div style="padding: 2px 0;"><span class="icon-eye-close"> </span> .icon-eye-close</div>\r\n<div style="padding: 2px 0;"><span class="icon-eye-blocked"> </span> .icon-eye-blocked</div>\r\n<div style="padding: 2px 0;"><span class="icon-eye-2"> </span> .icon-eye-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-clock"> </span> .icon-clock</div>\r\n<div style="padding: 2px 0;"><span class="icon-compass"> </span> .icon-compass</div>\r\n<div style="padding: 2px 0;"><span class="icon-broadcast"> </span> .icon-broadcast</div>\r\n<div style="padding: 2px 0;"><span class="icon-connection"> </span> .icon-connection</div>\r\n<div style="padding: 2px 0;"><span class="icon-wifi"> </span> .icon-wifi</div>\r\n<div style="padding: 2px 0;"><span class="icon-book"> </span> .icon-book</div>\r\n<div style="padding: 2px 0;"><span class="icon-lightning"> </span> .icon-lightning</div>\r\n<div style="padding: 2px 0;"><span class="icon-flash"> </span> .icon-flash</div>\r\n<div style="padding: 2px 0;"><span class="icon-print"> </span> .icon-print</div>\r\n<div style="padding: 2px 0;"><span class="icon-printer"> </span> .icon-printer</div>\r\n<div style="padding: 2px 0;"><span class="icon-feed"> </span> .icon-feed</div>\r\n<div style="padding: 2px 0;"><span class="icon-calendar"> </span> .icon-calendar</div>\r\n<div style="padding: 2px 0;"><span class="icon-calendar-2"> </span> .icon-calendar-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-calendar-3"> </span> .icon-calendar-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-pie"> </span> .icon-pie</div>\r\n<div style="padding: 2px 0;"><span class="icon-bars"> </span> .icon-bars</div>\r\n<div style="padding: 2px 0;"><span class="icon-chart"> </span> .icon-chart</div>\r\n<div style="padding: 2px 0;"><span class="icon-power-cord"> </span> .icon-power-cord</div>\r\n<div style="padding: 2px 0;"><span class="icon-cube"> </span> .icon-cube</div>\r\n<div style="padding: 2px 0;"><span class="icon-puzzle"> </span> .icon-puzzle</div>\r\n<div style="padding: 2px 0;"><span class="icon-attachment"> </span> .icon-attachment</div>\r\n<div style="padding: 2px 0;"><span class="icon-paperclip"> </span> .icon-paperclip</div>\r\n<div style="padding: 2px 0;"><span class="icon-flag-2"> </span> .icon-flag-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-lamp"> </span> .icon-lamp</div>\r\n<div style="padding: 2px 0;"><span class="icon-pin"> </span> .icon-pin</div>\r\n<div style="padding: 2px 0;"><span class="icon-pushpin"> </span> .icon-pushpin</div>\r\n<div style="padding: 2px 0;"><span class="icon-location"> </span> .icon-location</div>\r\n<div style="padding: 2px 0;"><span class="icon-shield"> </span> .icon-shield</div>\r\n<div style="padding: 2px 0;"><span class="icon-flag"> </span> .icon-flag</div>\r\n<div style="padding: 2px 0;"><span class="icon-flag-3"> </span> .icon-flag-3</div>\r\n<div style="padding: 2px 0;"><span class="icon-bookmark"> </span> .icon-bookmark</div>\r\n<div style="padding: 2px 0;"><span class="icon-bookmark-2"> </span> .icon-bookmark-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-heart"> </span> .icon-heart</div>\r\n<div style="padding: 2px 0;"><span class="icon-heart-2"> </span> .icon-heart-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-thumbs-up"> </span> .icon-thumbs-up</div>\r\n<div style="padding: 2px 0;"><span class="icon-thumbs-down"> </span> .icon-thumbs-down</div>\r\n<div style="padding: 2px 0;"><span class="icon-unfeatured"> </span> .icon-unfeatured</div>\r\n<div style="padding: 2px 0;"><span class="icon-asterisk"> </span> .icon-asterisk</div>\r\n<div style="padding: 2px 0;"><span class="icon-star-empty"> </span> .icon-star-empty</div>\r\n<div style="padding: 2px 0;"><span class="icon-star-2"> </span> .icon-star-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-featured"> </span> .icon-featured</div>\r\n<div style="padding: 2px 0;"><span class="icon-default"> </span> .icon-default</div>\r\n<div style="padding: 2px 0;"><span class="icon-star"> </span> .icon-star</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley"> </span> .icon-smiley</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-happy"> </span> .icon-smiley-happy</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-2"> </span> .icon-smiley-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-happy-2"> </span> .icon-smiley-happy-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-sad"> </span> .icon-smiley-sad</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-sad-2"> </span> .icon-smiley-sad-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-neutral"> </span> .icon-smiley-neutral</div>\r\n<div style="padding: 2px 0;"><span class="icon-smiley-neutral-2"> </span> .icon-smiley-neutral-2</div>\r\n<div style="padding: 2px 0;"><span class="icon-cart"> </span> .icon-cart</div>\r\n<div style="padding: 2px 0;"><span class="icon-basket"> </span> .icon-basket</div>\r\n<div style="padding: 2px 0;"><span class="icon-credit"> </span> .icon-credit</div>\r\n<div style="padding: 2px 0;"><span class="icon-credit-2"> </span> .icon-credit-2</div>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Top Contact Module</h3>\r\n<div class="row-fluid">\r\n<div class="span12">\r\n<pre>&lt;ul class="jm-contact-icons"&gt;<br />&lt;li class="jm-direction"&gt;&lt;img src="images/modules/direction.png" alt="Direction" /&gt;&lt;a title="Contact" href="#"&gt;Peterborough, UK&lt;/a&gt;&lt;/li&gt;<br />&lt;li class="jm-email"&gt;&lt;img src="images/modules/email.png" alt="Email" /&gt;&lt;a title="Contact" href="#"&gt;Email&lt;/a&gt;&lt;/li&gt;<br />&lt;li class="jm-phone"&gt;&lt;img src="images/modules/phone.png" alt="Phone" /&gt;&lt;a title="Contact" href="#"&gt;+44 7837 383 484&lt;/a&gt;&lt;/li&gt;<br />&lt;/ul&gt;</pre>\r\n<ul class="jm-contact-icons">\r\n<li class="jm-direction"><img src="images/modules/direction.png" alt="Direction" /><a title="Contact" href="#">Peterborough, UK</a></li>\r\n<li class="jm-email"><img src="images/modules/email.png" alt="Email" /><a title="Contact" href="#">Email</a></li>\r\n<li class="jm-phone"><img src="images/modules/phone.png" alt="Phone" /><a title="Contact" href="#">+44 7837 383 484</a></li>\r\n</ul>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Color Boxes</h3>\r\n<div class="row-fluid">\r\n<div class="span4">\r\n<pre>&lt;p style="margin: 0;"&gt;<br />&lt;a class="jm-color-box1 text-center" href="#"&gt;<br />&lt;span class="jm-icon-title"&gt;<br />TIME MACHINE<br />&lt;/span&gt; <br />&lt;span class="jm-icon-image"&gt;&amp;nbsp;&lt;/span&gt; <br />&lt;span class="jm-icon-desc"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/span&gt; <br />&lt;/a&gt;<br />&lt;/p&gt;</pre>\r\n<p style="margin: 0;"><a class="jm-color-box1 text-center" href="#"> <span class="jm-icon-title">TIME MACHINE</span> <span class="jm-icon-image"> </span> <span class="jm-icon-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> </a></p>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;p style="margin: 0;"&gt;<br />&lt;a class="jm-color-box2 text-center" href="#"&gt;<br />&lt;span class="jm-icon-title"&gt;<br />ANALYTICS<br />&lt;/span&gt;<br />&lt;span class="jm-icon-image"&gt;&amp;nbsp;&lt;/span&gt;<br />&lt;span class="jm-icon-desc"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/span&gt;<br />&lt;/a&gt;<br />&lt;/p&gt;</pre>\r\n<p style="margin: 0;"><a class="jm-color-box2 text-center" href="#"> <span class="jm-icon-title">ANALYTICS</span> <span class="jm-icon-image"> </span> <span class="jm-icon-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> </a></p>\r\n</div>\r\n<div class="span4">\r\n<pre>&lt;p style="margin: 0;"&gt;<br />&lt;a class="jm-color-box3 text-center" href="#"&gt;<br />&lt;span class="jm-icon-title"&gt;<br />WORLDWIDE SERVICE<br />&lt;/span&gt;<br />&lt;span class="jm-icon-image"&gt;&amp;nbsp;&lt;/span&gt;<br />&lt;span class="jm-icon-desc"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/span&gt;<br />&lt;/a&gt;<br />&lt;/p&gt;</pre>\r\n<p style="margin: 0;"><a class="jm-color-box3 text-center" href="#"> <span class="jm-icon-title">WORLDWIDE SERVICE</span> <span class="jm-icon-image"> </span> <span class="jm-icon-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span> </a></p>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Just Few Words Module</h3>\r\n<div class="row-fluid">\r\n<div class="span12">\r\n<pre>&lt;div class="pull-left visible-desktop"&gt;<br />&lt;img class="jm-image-margin" src="images/modules/custom1.jpg" alt="Custom" /&gt;<br />&lt;/div&gt;<br />&lt;div class="jm-table"&gt;<br />&lt;h3 class="jm-title" style="margin-bottom: 20px;"&gt;JUST FEW WORDS&lt;/h3&gt;<br />&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.&lt;/p&gt;<br />&lt;ul class="jm-custom-list"&gt;<br />&lt;li&gt;Ut enim ad minim veniam, quis nostrud&lt;/li&gt;<br />&lt;li&gt;Exercitation ullamco laboris nisi&lt;/li&gt;<br />&lt;li&gt;Ut aliquip ex ea commodo consequat.&lt;/li&gt;<br />&lt;li&gt;Duis aute irure dolor in reprehenderit&lt;/li&gt;<br />&lt;/ul&gt;<br />&lt;p class="readmore text-right"&gt;&lt;a class="btn" href="#"&gt;read more&lt;/a&gt;&lt;/p&gt;<br />&lt;/div&gt;</pre>\r\n<div class="jm-module clearfix">\r\n<div class="pull-left visible-desktop"><img class="jm-image-margin" src="images/modules/custom1.jpg" alt="Custom" /></div>\r\n<div class="jm-table">\r\n<h3 class="jm-title" style="margin-bottom: 20px;">JUST FEW WORDS</h3>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>\r\n<ul class="jm-custom-list">\r\n<li>Ut enim ad minim veniam, quis nostrud</li>\r\n<li>Exercitation ullamco laboris nisi</li>\r\n<li>Ut aliquip ex ea commodo consequat.</li>\r\n<li>Duis aute irure dolor in reprehenderit</li>\r\n</ul>\r\n<p class="readmore text-right"><a class="btn" href="#"> read more </a></p>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n<h3 class="jm-typo-title">Social Module</h3>\r\n<div class="row-fluid">\r\n<div class="span12">\r\n<div class="jm-socials">\r\n<pre>&lt;div class="jm-socials"&gt;<br />&lt;a class="facebook" href="#"&gt;&amp;nbsp;&lt;/a&gt;<br />&lt;a class="googleplus" href="#"&gt;&amp;nbsp;&lt;/a&gt;<br />&lt;a class="twitter" href="#"&gt;&amp;nbsp;&lt;/a&gt;<br />&lt;a class="linkedin" href="#"&gt;&amp;nbsp;&lt;/a&gt;<br />&lt;a class="skype" href="#"&gt;&amp;nbsp;&lt;/a&gt;<br />&lt;a class="vimeo" href="#"&gt;&amp;nbsp;&lt;/a&gt;<br />&lt;/div&gt;</pre>\r\n<a class="facebook" href="#"> </a> <a class="googleplus" href="#"> </a> <a class="twitter" href="#"> </a> <a class="linkedin" href="#"> </a> <a class="skype" href="#"> </a> <a class="vimeo" href="#"> </a></div>\r\n</div>\r\n</div>', '', 1, 78, '2014-05-14 12:40:26', 554, '', '2014-09-16 10:45:52', 800, 0, '0000-00-00 00:00:00', '2014-05-14 12:40:26', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 59, 7, '', '', 1, 154, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 INSERT INTO `b1978_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
 (96, 287, 'Lorem Ipsum', 'lorem-ipsum', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\r\n<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris sit amet nibh nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>\r\n', '\r\n<p>Ut lectus felis, facilisis nec erat at, pretium pellentesque lectus. Donec sit amet nibh est. Morbi augue libero, pretium vitae nulla ac, malesuada ultricies neque. Donec eget neque erat. Nam dictum justo sit amet placerat consectetur. Maecenas laoreet, ligula vel scelerisque ultricies, lorem urna luctus odio, eget convallis. Quisque vestibulum tempus felis. Nulla interdum varius arcu nec. Duis id erat nunc.</p>\r\n<h4>Lorem ipsum dolor</h4>\r\n<p>Nunc placerat egestas vehicula. Fusce eu risus sit amet metus sagittis volutpat vehicula porttitor elit. Sed fringilla purus sed mi scelerisque scelerisque. Donec vel enim ligula. Phasellus vulputate ac dui aliquet dapibus. Suspendisse ut vestibulum tellus, sed gravida arcu. Aliquam erat volutpat. Cras eu quam vitae magna cursus adipiscing. Etiam quis mi lacus. Proin fermentum velit non ligula malesuada imperdiet. Sed sapien enim, porta vel tempus sed, suscipit quis nisl. In vestibulum ut massa eu feugiat.</p>\r\n<p class="jm-block second"><span class="jm">1</span>Nulla vestibulum ultrices felis sit amet dapibus. Suspendisse et ligula hendrerit, auctor justo vel, sagittis metus. Mauris tincidunt quam eu pulvinar sagittis. Pellentesque imperdiet, purus vel feugiat pharetra, lectus velit scelerisque nisi, a aliquam nibh augue vel urna. In volutpat tellus et pulvinar varius. Aenean ultricies euismod rhoncus.</p>\r\n<p class="jm-block second"><span class="jm">2</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque magna et orci porttitor ullamcorper. Proin euismod pretium dolor non consectetur. Aliquam feugiat nunc ac justo hendrerit, non lobortis lacus condimentum. Duis id erat nunc. Nam eu aliquam velit. Donec pretium sed quam quis pulvinar.</p>\r\n<p class="jm-block second"><span class="jm">3</span>Cras eleifend iaculis purus sed hendrerit. Nulla facilisi. Sed congue semper consequat. Nam viverra semper libero, a luctus eros. Nulla porttitor commodo velit nec rhoncus. Vivamus blandit tellus risus, et hendrerit nisi aliquet ut. Ut imperdiet orci tellus, in tristique urna mattis eu.</p>\r\n<p>Nulla vestibulum ultrices felis sit amet dapibus. Suspendisse et ligula hendrerit, auctor justo vel, sagittis metus. Mauris tincidunt quam eu pulvinar sagittis. Pellentesque imperdiet, purus vel feugiat pharetra, lectus velit scelerisque nisi, a aliquam nibh augue vel urna. In volutpat tellus et pulvinar varius. Aenean ultricies euismod rhoncus. Ut lectus felis, facilisis nec erat at, pretium pellentesque lectus. Donec sit amet nibh est. Morbi augue libero, pretium vitae nulla ac, malesuada ultricies neque. Donec eget neque erat. Nam dictum justo sit amet placerat consectetur.</p>\r\n<h4>Consectetur adipiscing elit</h4>\r\n<p>Cras eleifend iaculis purus sed hendrerit. Nulla facilisi. Sed congue semper consequat. Nam viverra semper libero, a luctus eros. Nulla porttitor commodo velit nec rhoncus. Vivamus blandit tellus risus, et hendrerit nisi aliquet ut. Ut imperdiet orci tellus, in tristique urna mattis eu. Pellentesque ligula nisl, hendrerit nec facilisis sit amet, faucibus ac nulla. Morbi et consectetur ante. Etiam eu sodales tortor, ac dapibus lectus. In laoreet tempor felis, in ornare urna consequat sit amet. Praesent vehicula libero ac tellus rutrum ultrices. Sed eu consectetur libero, id varius massa. Quisque vestibulum tempus felis. Nulla interdum varius arcu nec.</p>\r\n<p class="jmpeople">Ut lectus felis, facilisis nec erat at, pretium pellentesque lectus. Donec sit amet nibh est. Morbi augue libero, pretium vitae nulla ac, malesuada ultricies neque. Praesent vehicula libero ac tellus rutrum ultrices. Sed eu consectetur libero, id varius massa. Nulla interdum varius arcu nec accumsan.</p>\r\n<p class="jmmail">Cras eleifend iaculis purus sed hendrerit. Nulla facilisi. Sed congue semper consequat. Nam viverra semper libero, a luctus eros. Nulla porttitor commodo velit nec rhoncus. Donec sit amet nibh est. Morbi augue libero, pretium vitae nulla ac. Nulla porttitor commodo velit nec rhoncus.</p>\r\n<p>Ut lectus felis, facilisis nec erat at, pretium pellentesque lectus. Donec sit amet nibh est. Morbi augue libero, pretium vitae nulla ac, malesuada ultricies neque. Donec eget neque erat. Nam dictum justo sit amet placerat consectetur. Maecenas laoreet, ligula vel scelerisque ultricies, lorem urna luctus odio, eget convallis urna erat quis justo. Morbi vel placerat nisl, ut tempor odio. Sed lacinia purus sit amet lorem dictum tincidunt.</p>', 1, 84, '2014-05-15 12:44:15', 554, '', '2014-07-07 15:18:49', 800, 0, '0000-00-00 00:00:00', '2014-05-15 12:44:15', '0000-00-00 00:00:00', '{"image_intro":"images\\/blog\\/blog2.jpg","float_intro":"left","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 11, 12, '', '', 1, 5, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
@@ -598,10 +604,10 @@ INSERT INTO `b1978_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `f
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_contentitem_tag_map`
+-- Table structure for table `b1978_contentitem_tag_map`
 --
 
-CREATE TABLE `b1978_contentitem_tag_map` (
+CREATE TABLE IF NOT EXISTS `b1978_contentitem_tag_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
@@ -617,7 +623,7 @@ CREATE TABLE `b1978_contentitem_tag_map` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps items from content tables to tags';
 
 --
--- Dump dei dati per la tabella `b1978_contentitem_tag_map`
+-- Dumping data for table `b1978_contentitem_tag_map`
 --
 
 INSERT INTO `b1978_contentitem_tag_map` (`type_alias`, `core_content_id`, `content_item_id`, `tag_id`, `tag_date`, `type_id`) VALUES
@@ -734,17 +740,17 @@ INSERT INTO `b1978_contentitem_tag_map` (`type_alias`, `core_content_id`, `conte
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_content_frontpage`
+-- Table structure for table `b1978_content_frontpage`
 --
 
-CREATE TABLE `b1978_content_frontpage` (
+CREATE TABLE IF NOT EXISTS `b1978_content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_content_frontpage`
+-- Dumping data for table `b1978_content_frontpage`
 --
 
 INSERT INTO `b1978_content_frontpage` (`content_id`, `ordering`) VALUES
@@ -756,10 +762,10 @@ INSERT INTO `b1978_content_frontpage` (`content_id`, `ordering`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_content_rating`
+-- Table structure for table `b1978_content_rating`
 --
 
-CREATE TABLE `b1978_content_rating` (
+CREATE TABLE IF NOT EXISTS `b1978_content_rating` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `rating_sum` int(10) unsigned NOT NULL DEFAULT '0',
   `rating_count` int(10) unsigned NOT NULL DEFAULT '0',
@@ -770,10 +776,10 @@ CREATE TABLE `b1978_content_rating` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_content_types`
+-- Table structure for table `b1978_content_types`
 --
 
-CREATE TABLE `b1978_content_types` (
+CREATE TABLE IF NOT EXISTS `b1978_content_types` (
   `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_title` varchar(255) NOT NULL DEFAULT '',
   `type_alias` varchar(255) NOT NULL DEFAULT '',
@@ -787,7 +793,7 @@ CREATE TABLE `b1978_content_types` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10000 ;
 
 --
--- Dump dei dati per la tabella `b1978_content_types`
+-- Dumping data for table `b1978_content_types`
 --
 
 INSERT INTO `b1978_content_types` (`type_id`, `type_title`, `type_alias`, `table`, `rules`, `field_mappings`, `router`, `content_history_options`) VALUES
@@ -810,10 +816,10 @@ INSERT INTO `b1978_content_types` (`type_id`, `type_title`, `type_alias`, `table
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_core_log_searches`
+-- Table structure for table `b1978_core_log_searches`
 --
 
-CREATE TABLE `b1978_core_log_searches` (
+CREATE TABLE IF NOT EXISTS `b1978_core_log_searches` (
   `search_term` varchar(128) NOT NULL DEFAULT '',
   `hits` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -821,10 +827,10 @@ CREATE TABLE `b1978_core_log_searches` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_djimageslider`
+-- Table structure for table `b1978_djimageslider`
 --
 
-CREATE TABLE `b1978_djimageslider` (
+CREATE TABLE IF NOT EXISTS `b1978_djimageslider` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
@@ -843,7 +849,7 @@ CREATE TABLE `b1978_djimageslider` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
--- Dump dei dati per la tabella `b1978_djimageslider`
+-- Dumping data for table `b1978_djimageslider`
 --
 
 INSERT INTO `b1978_djimageslider` (`id`, `catid`, `title`, `alias`, `image`, `description`, `published`, `publish_up`, `publish_down`, `checked_out`, `checked_out_time`, `ordering`, `params`) VALUES
@@ -884,10 +890,10 @@ INSERT INTO `b1978_djimageslider` (`id`, `catid`, `title`, `alias`, `image`, `de
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_extensions`
+-- Table structure for table `b1978_extensions`
 --
 
-CREATE TABLE `b1978_extensions` (
+CREATE TABLE IF NOT EXISTS `b1978_extensions` (
   `extension_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
@@ -912,7 +918,7 @@ CREATE TABLE `b1978_extensions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10018 ;
 
 --
--- Dump dei dati per la tabella `b1978_extensions`
+-- Dumping data for table `b1978_extensions`
 --
 
 INSERT INTO `b1978_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
@@ -1066,10 +1072,10 @@ INSERT INTO `b1978_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_filters`
+-- Table structure for table `b1978_finder_filters`
 --
 
-CREATE TABLE `b1978_finder_filters` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_filters` (
   `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
@@ -1090,10 +1096,10 @@ CREATE TABLE `b1978_finder_filters` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links`
+-- Table structure for table `b1978_finder_links`
 --
 
-CREATE TABLE `b1978_finder_links` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links` (
   `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
@@ -1123,7 +1129,7 @@ CREATE TABLE `b1978_finder_links` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dump dei dati per la tabella `b1978_finder_links`
+-- Dumping data for table `b1978_finder_links`
 --
 
 INSERT INTO `b1978_finder_links` (`link_id`, `url`, `route`, `title`, `description`, `indexdate`, `md5sum`, `published`, `state`, `access`, `language`, `publish_start_date`, `publish_end_date`, `start_date`, `end_date`, `list_price`, `sale_price`, `type_id`, `object`) VALUES
@@ -1133,10 +1139,10 @@ INSERT INTO `b1978_finder_links` (`link_id`, `url`, `route`, `title`, `descripti
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms0`
+-- Table structure for table `b1978_finder_links_terms0`
 --
 
-CREATE TABLE `b1978_finder_links_terms0` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms0` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1146,7 +1152,7 @@ CREATE TABLE `b1978_finder_links_terms0` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_links_terms0`
+-- Dumping data for table `b1978_finder_links_terms0`
 --
 
 INSERT INTO `b1978_finder_links_terms0` (`link_id`, `term_id`, `weight`) VALUES
@@ -1167,10 +1173,10 @@ INSERT INTO `b1978_finder_links_terms0` (`link_id`, `term_id`, `weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms1`
+-- Table structure for table `b1978_finder_links_terms1`
 --
 
-CREATE TABLE `b1978_finder_links_terms1` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms1` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1182,10 +1188,10 @@ CREATE TABLE `b1978_finder_links_terms1` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms2`
+-- Table structure for table `b1978_finder_links_terms2`
 --
 
-CREATE TABLE `b1978_finder_links_terms2` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms2` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1197,10 +1203,10 @@ CREATE TABLE `b1978_finder_links_terms2` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms3`
+-- Table structure for table `b1978_finder_links_terms3`
 --
 
-CREATE TABLE `b1978_finder_links_terms3` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms3` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1212,10 +1218,10 @@ CREATE TABLE `b1978_finder_links_terms3` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms4`
+-- Table structure for table `b1978_finder_links_terms4`
 --
 
-CREATE TABLE `b1978_finder_links_terms4` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms4` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1227,10 +1233,10 @@ CREATE TABLE `b1978_finder_links_terms4` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms5`
+-- Table structure for table `b1978_finder_links_terms5`
 --
 
-CREATE TABLE `b1978_finder_links_terms5` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms5` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1242,10 +1248,10 @@ CREATE TABLE `b1978_finder_links_terms5` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms6`
+-- Table structure for table `b1978_finder_links_terms6`
 --
 
-CREATE TABLE `b1978_finder_links_terms6` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms6` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1257,10 +1263,10 @@ CREATE TABLE `b1978_finder_links_terms6` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms7`
+-- Table structure for table `b1978_finder_links_terms7`
 --
 
-CREATE TABLE `b1978_finder_links_terms7` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms7` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1270,7 +1276,7 @@ CREATE TABLE `b1978_finder_links_terms7` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_links_terms7`
+-- Dumping data for table `b1978_finder_links_terms7`
 --
 
 INSERT INTO `b1978_finder_links_terms7` (`link_id`, `term_id`, `weight`) VALUES
@@ -1282,10 +1288,10 @@ INSERT INTO `b1978_finder_links_terms7` (`link_id`, `term_id`, `weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms8`
+-- Table structure for table `b1978_finder_links_terms8`
 --
 
-CREATE TABLE `b1978_finder_links_terms8` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms8` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1295,7 +1301,7 @@ CREATE TABLE `b1978_finder_links_terms8` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_links_terms8`
+-- Dumping data for table `b1978_finder_links_terms8`
 --
 
 INSERT INTO `b1978_finder_links_terms8` (`link_id`, `term_id`, `weight`) VALUES
@@ -1311,10 +1317,10 @@ INSERT INTO `b1978_finder_links_terms8` (`link_id`, `term_id`, `weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_terms9`
+-- Table structure for table `b1978_finder_links_terms9`
 --
 
-CREATE TABLE `b1978_finder_links_terms9` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_terms9` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1326,10 +1332,10 @@ CREATE TABLE `b1978_finder_links_terms9` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_termsa`
+-- Table structure for table `b1978_finder_links_termsa`
 --
 
-CREATE TABLE `b1978_finder_links_termsa` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_termsa` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1341,10 +1347,10 @@ CREATE TABLE `b1978_finder_links_termsa` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_termsb`
+-- Table structure for table `b1978_finder_links_termsb`
 --
 
-CREATE TABLE `b1978_finder_links_termsb` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_termsb` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1356,10 +1362,10 @@ CREATE TABLE `b1978_finder_links_termsb` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_termsc`
+-- Table structure for table `b1978_finder_links_termsc`
 --
 
-CREATE TABLE `b1978_finder_links_termsc` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_termsc` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1369,7 +1375,7 @@ CREATE TABLE `b1978_finder_links_termsc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_links_termsc`
+-- Dumping data for table `b1978_finder_links_termsc`
 --
 
 INSERT INTO `b1978_finder_links_termsc` (`link_id`, `term_id`, `weight`) VALUES
@@ -1379,10 +1385,10 @@ INSERT INTO `b1978_finder_links_termsc` (`link_id`, `term_id`, `weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_termsd`
+-- Table structure for table `b1978_finder_links_termsd`
 --
 
-CREATE TABLE `b1978_finder_links_termsd` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_termsd` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1394,10 +1400,10 @@ CREATE TABLE `b1978_finder_links_termsd` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_termse`
+-- Table structure for table `b1978_finder_links_termse`
 --
 
-CREATE TABLE `b1978_finder_links_termse` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_termse` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1407,7 +1413,7 @@ CREATE TABLE `b1978_finder_links_termse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_links_termse`
+-- Dumping data for table `b1978_finder_links_termse`
 --
 
 INSERT INTO `b1978_finder_links_termse` (`link_id`, `term_id`, `weight`) VALUES
@@ -1429,10 +1435,10 @@ INSERT INTO `b1978_finder_links_termse` (`link_id`, `term_id`, `weight`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_links_termsf`
+-- Table structure for table `b1978_finder_links_termsf`
 --
 
-CREATE TABLE `b1978_finder_links_termsf` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_links_termsf` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1444,10 +1450,10 @@ CREATE TABLE `b1978_finder_links_termsf` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_taxonomy`
+-- Table structure for table `b1978_finder_taxonomy`
 --
 
-CREATE TABLE `b1978_finder_taxonomy` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_taxonomy` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
@@ -1463,7 +1469,7 @@ CREATE TABLE `b1978_finder_taxonomy` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
 
 --
--- Dump dei dati per la tabella `b1978_finder_taxonomy`
+-- Dumping data for table `b1978_finder_taxonomy`
 --
 
 INSERT INTO `b1978_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `access`, `ordering`) VALUES
@@ -1479,10 +1485,10 @@ INSERT INTO `b1978_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `acces
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_taxonomy_map`
+-- Table structure for table `b1978_finder_taxonomy_map`
 --
 
-CREATE TABLE `b1978_finder_taxonomy_map` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_taxonomy_map` (
   `link_id` int(10) unsigned NOT NULL,
   `node_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`link_id`,`node_id`),
@@ -1491,7 +1497,7 @@ CREATE TABLE `b1978_finder_taxonomy_map` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_taxonomy_map`
+-- Dumping data for table `b1978_finder_taxonomy_map`
 --
 
 INSERT INTO `b1978_finder_taxonomy_map` (`link_id`, `node_id`) VALUES
@@ -1507,10 +1513,10 @@ INSERT INTO `b1978_finder_taxonomy_map` (`link_id`, `node_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_terms`
+-- Table structure for table `b1978_finder_terms`
 --
 
-CREATE TABLE `b1978_finder_terms` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_terms` (
   `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
@@ -1528,7 +1534,7 @@ CREATE TABLE `b1978_finder_terms` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
--- Dump dei dati per la tabella `b1978_finder_terms`
+-- Dumping data for table `b1978_finder_terms`
 --
 
 INSERT INTO `b1978_finder_terms` (`term_id`, `term`, `stem`, `common`, `phrase`, `weight`, `soundex`, `links`, `language`) VALUES
@@ -1563,10 +1569,10 @@ INSERT INTO `b1978_finder_terms` (`term_id`, `term`, `stem`, `common`, `phrase`,
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_terms_common`
+-- Table structure for table `b1978_finder_terms_common`
 --
 
-CREATE TABLE `b1978_finder_terms_common` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_terms_common` (
   `term` varchar(75) NOT NULL,
   `language` varchar(3) NOT NULL,
   KEY `idx_word_lang` (`term`,`language`),
@@ -1574,7 +1580,7 @@ CREATE TABLE `b1978_finder_terms_common` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_finder_terms_common`
+-- Dumping data for table `b1978_finder_terms_common`
 --
 
 INSERT INTO `b1978_finder_terms_common` (`term`, `language`) VALUES
@@ -1697,10 +1703,10 @@ INSERT INTO `b1978_finder_terms_common` (`term`, `language`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_tokens`
+-- Table structure for table `b1978_finder_tokens`
 --
 
-CREATE TABLE `b1978_finder_tokens` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
   `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1715,10 +1721,10 @@ CREATE TABLE `b1978_finder_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_tokens_aggregate`
+-- Table structure for table `b1978_finder_tokens_aggregate`
 --
 
-CREATE TABLE `b1978_finder_tokens_aggregate` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_tokens_aggregate` (
   `term_id` int(10) unsigned NOT NULL,
   `map_suffix` char(1) NOT NULL,
   `term` varchar(75) NOT NULL,
@@ -1737,10 +1743,10 @@ CREATE TABLE `b1978_finder_tokens_aggregate` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_finder_types`
+-- Table structure for table `b1978_finder_types`
 --
 
-CREATE TABLE `b1978_finder_types` (
+CREATE TABLE IF NOT EXISTS `b1978_finder_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `mime` varchar(100) NOT NULL,
@@ -1749,7 +1755,7 @@ CREATE TABLE `b1978_finder_types` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dump dei dati per la tabella `b1978_finder_types`
+-- Dumping data for table `b1978_finder_types`
 --
 
 INSERT INTO `b1978_finder_types` (`id`, `title`, `mime`) VALUES
@@ -1763,10 +1769,10 @@ INSERT INTO `b1978_finder_types` (`id`, `title`, `mime`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_languages`
+-- Table structure for table `b1978_languages`
 --
 
-CREATE TABLE `b1978_languages` (
+CREATE TABLE IF NOT EXISTS `b1978_languages` (
   `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` char(7) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -1789,7 +1795,7 @@ CREATE TABLE `b1978_languages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dump dei dati per la tabella `b1978_languages`
+-- Dumping data for table `b1978_languages`
 --
 
 INSERT INTO `b1978_languages` (`lang_id`, `lang_code`, `title`, `title_native`, `sef`, `image`, `description`, `metakey`, `metadesc`, `sitename`, `published`, `access`, `ordering`) VALUES
@@ -1799,10 +1805,10 @@ INSERT INTO `b1978_languages` (`lang_id`, `lang_code`, `title`, `title_native`, 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_menu`
+-- Table structure for table `b1978_menu`
 --
 
-CREATE TABLE `b1978_menu` (
+CREATE TABLE IF NOT EXISTS `b1978_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
@@ -1835,14 +1841,14 @@ CREATE TABLE `b1978_menu` (
   KEY `idx_alias` (`alias`),
   KEY `idx_path` (`path`(255)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=784 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=785 ;
 
 --
--- Dump dei dati per la tabella `b1978_menu`
+-- Dumping data for table `b1978_menu`
 --
 
 INSERT INTO `b1978_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 305, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 307, 0, '*', 0),
 (2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 87, 96, 0, '*', 1),
 (3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 88, 89, 0, '*', 1),
 (4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 90, 91, 0, '*', 1),
@@ -1995,15 +2001,16 @@ INSERT INTO `b1978_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (780, 'mainmenuculinary', 'Business Theme', 'business-theme', '', 'examples-culinary/business-theme', 'index.php?Itemid=', 'alias', 1, 667, 2, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"aliasoptions":"435","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1}', 158, 159, 0, '*', 0),
 (781, 'mainmenudental', 'Business Theme', 'business-theme', '', 'examples-dental/business-theme', 'index.php?Itemid=', 'alias', 1, 747, 2, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"aliasoptions":"435","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1}', 240, 241, 0, '*', 0),
 (782, 'mainmenu', 'Share', 'share', '', 'share', 'index.php?option=com_wrapper&view=wrapper', 'component', 1, 1, 1, 2, 554, '2014-10-11 12:14:56', 0, 2, '', 0, '{"url":"http:\\/\\/localhost:8888\\/hackzurich\\/share.php","scrolling":"auto","width":"100%","height":"500","height_auto":"0","add_scheme":"1","frameborder":"0","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 3, 4, 0, '*', 0),
-(783, 'mainmenu', 'Search', 'search', '', 'search', 'index.php?option=com_content&view=article&id=134', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 2, '', 0, '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 5, 6, 0, '*', 0);
+(783, 'mainmenu', 'Search', 'search', '', 'search', 'index.php?option=com_content&view=article&id=134', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 2, '', 0, '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 5, 6, 0, '*', 0),
+(784, 'mainmenu', 'GraphicView', 'graphicview', '', 'graphicview', 'index.php?option=com_wrapper&view=wrapper', 'component', 1, 1, 1, 2, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"url":"http:\\/\\/localhost\\/edusharity\\/diagram\\/index.html","scrolling":"no","width":"100%","height":"500","height_auto":"0","add_scheme":"1","frameborder":"0","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 305, 306, 0, '*', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_menu_types`
+-- Table structure for table `b1978_menu_types`
 --
 
-CREATE TABLE `b1978_menu_types` (
+CREATE TABLE IF NOT EXISTS `b1978_menu_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL,
   `title` varchar(48) NOT NULL,
@@ -2013,7 +2020,7 @@ CREATE TABLE `b1978_menu_types` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
--- Dump dei dati per la tabella `b1978_menu_types`
+-- Dumping data for table `b1978_menu_types`
 --
 
 INSERT INTO `b1978_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
@@ -2025,10 +2032,10 @@ INSERT INTO `b1978_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_messages`
+-- Table structure for table `b1978_messages`
 --
 
-CREATE TABLE `b1978_messages` (
+CREATE TABLE IF NOT EXISTS `b1978_messages` (
   `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id_from` int(10) unsigned NOT NULL DEFAULT '0',
   `user_id_to` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2045,10 +2052,10 @@ CREATE TABLE `b1978_messages` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_messages_cfg`
+-- Table structure for table `b1978_messages_cfg`
 --
 
-CREATE TABLE `b1978_messages_cfg` (
+CREATE TABLE IF NOT EXISTS `b1978_messages_cfg` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `cfg_name` varchar(100) NOT NULL DEFAULT '',
   `cfg_value` varchar(255) NOT NULL DEFAULT '',
@@ -2058,10 +2065,10 @@ CREATE TABLE `b1978_messages_cfg` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_modules`
+-- Table structure for table `b1978_modules`
 --
 
-CREATE TABLE `b1978_modules` (
+CREATE TABLE IF NOT EXISTS `b1978_modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(100) NOT NULL DEFAULT '',
@@ -2087,7 +2094,7 @@ CREATE TABLE `b1978_modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=181 ;
 
 --
--- Dump dei dati per la tabella `b1978_modules`
+-- Dumping data for table `b1978_modules`
 --
 
 INSERT INTO `b1978_modules` (`id`, `asset_id`, `title`, `note`, `content`, `ordering`, `position`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `published`, `module`, `access`, `showtitle`, `params`, `client_id`, `language`) VALUES
@@ -2179,22 +2186,22 @@ INSERT INTO `b1978_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orde
 (177, 392, 'Our Services', '', '', 1, 'bottom1-1', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_djimageslider', 1, 1, '{"slider_source":"1","slider_type":"0","link_image":"1","image_folder":"images\\/sampledata\\/fruitshop","link":"","category":"96","show_title":"1","show_desc":"1","show_readmore":"1","readmore_text":"","link_title":"1","link_desc":"1","limit_desc":"","image_width":"255","image_height":"255","fit_to":"0","visible_images":"4","space_between_images":"30","max_images":"20","sort_by":"1","effect":"Expo","autoplay":"0","show_buttons":"0","show_arrows":"0","show_custom_nav":"1","desc_width":"","desc_bottom":"0","desc_horizontal":"0","left_arrow":"images\\/djimageslider\\/navigation\\/prev.png","right_arrow":"images\\/djimageslider\\/navigation\\/next.png","play_button":"images\\/djimageslider\\/navigation\\/play.png","pause_button":"images\\/djimageslider\\/navigation\\/pause.png","arrows_top":"0","arrows_horizontal":"0","effect_type":"0","duration":"","delay":"","preload":"800","layout":"_:default","moduleclass_sfx":" title-ms","cache":"1","cache_time":"900","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (178, 394, 'Popular Articles', '', '', 1, 'footer-mod-1', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_articles_popular', 1, 1, '{"catid":[""],"count":"5","show_front":"1","layout":"_:default","moduleclass_sfx":" blank-ms jm-light-list","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (179, 397, 'Search on Error 404 page', '', '', 1, 'error404-search', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_search', 1, 0, '{"label":"","width":"20","text":"","button":"1","button_pos":"right","imagebutton":"0","button_text":"","opensearch":"1","opensearch_title":"","set_itemid":"0","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
-(180, 402, 'myHtml', '', 'this is my html', 0, 'header', 554, '2014-10-11 18:55:56', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_custom', 1, 1, '{"prepare_content":"0","backgroundimage":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
+(180, 402, 'myHtml', '', 'this is my html', 0, 'header', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_custom', 1, 1, '{"prepare_content":"0","backgroundimage":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_modules_menu`
+-- Table structure for table `b1978_modules_menu`
 --
 
-CREATE TABLE `b1978_modules_menu` (
+CREATE TABLE IF NOT EXISTS `b1978_modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT '0',
   `menuid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`moduleid`,`menuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_modules_menu`
+-- Dumping data for table `b1978_modules_menu`
 --
 
 INSERT INTO `b1978_modules_menu` (`moduleid`, `menuid`) VALUES
@@ -2653,10 +2660,10 @@ INSERT INTO `b1978_modules_menu` (`moduleid`, `menuid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_newsfeeds`
+-- Table structure for table `b1978_newsfeeds`
 --
 
-CREATE TABLE `b1978_newsfeeds` (
+CREATE TABLE IF NOT EXISTS `b1978_newsfeeds` (
   `catid` int(11) NOT NULL DEFAULT '0',
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
@@ -2700,10 +2707,10 @@ CREATE TABLE `b1978_newsfeeds` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_overrider`
+-- Table structure for table `b1978_overrider`
 --
 
-CREATE TABLE `b1978_overrider` (
+CREATE TABLE IF NOT EXISTS `b1978_overrider` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `constant` varchar(255) NOT NULL,
   `string` text NOT NULL,
@@ -2714,10 +2721,10 @@ CREATE TABLE `b1978_overrider` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_postinstall_messages`
+-- Table structure for table `b1978_postinstall_messages`
 --
 
-CREATE TABLE `b1978_postinstall_messages` (
+CREATE TABLE IF NOT EXISTS `b1978_postinstall_messages` (
   `postinstall_message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `extension_id` bigint(20) NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
   `title_key` varchar(255) NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
@@ -2736,7 +2743,7 @@ CREATE TABLE `b1978_postinstall_messages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dump dei dati per la tabella `b1978_postinstall_messages`
+-- Dumping data for table `b1978_postinstall_messages`
 --
 
 INSERT INTO `b1978_postinstall_messages` (`postinstall_message_id`, `extension_id`, `title_key`, `description_key`, `action_key`, `language_extension`, `language_client_id`, `type`, `action_file`, `action`, `condition_file`, `condition_method`, `version_introduced`, `enabled`) VALUES
@@ -2748,10 +2755,10 @@ INSERT INTO `b1978_postinstall_messages` (`postinstall_message_id`, `extension_i
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_redirect_links`
+-- Table structure for table `b1978_redirect_links`
 --
 
-CREATE TABLE `b1978_redirect_links` (
+CREATE TABLE IF NOT EXISTS `b1978_redirect_links` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `old_url` varchar(255) NOT NULL,
   `new_url` varchar(255) NOT NULL,
@@ -2769,17 +2776,17 @@ CREATE TABLE `b1978_redirect_links` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_schemas`
+-- Table structure for table `b1978_schemas`
 --
 
-CREATE TABLE `b1978_schemas` (
+CREATE TABLE IF NOT EXISTS `b1978_schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL,
   PRIMARY KEY (`extension_id`,`version_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_schemas`
+-- Dumping data for table `b1978_schemas`
 --
 
 INSERT INTO `b1978_schemas` (`extension_id`, `version_id`) VALUES
@@ -2789,10 +2796,10 @@ INSERT INTO `b1978_schemas` (`extension_id`, `version_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_session`
+-- Table structure for table `b1978_session`
 --
 
-CREATE TABLE `b1978_session` (
+CREATE TABLE IF NOT EXISTS `b1978_session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
   `client_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `guest` tinyint(4) unsigned DEFAULT '1',
@@ -2806,19 +2813,21 @@ CREATE TABLE `b1978_session` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_session`
+-- Dumping data for table `b1978_session`
 --
 
 INSERT INTO `b1978_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('b0349b9ebd9dc81c24b0272456bcc7c6', 0, 0, '1413059809', '__default|a:8:{s:15:"session.counter";i:159;s:19:"session.timer.start";i:1413052292;s:18:"session.timer.last";i:1413059808;s:17:"session.timer.now";i:1413059809;s:22:"session.client.browser";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":2:{s:11:"jm-services";O:8:"stdClass":1:{s:6:"themer";O:8:"stdClass":1:{s:5:"state";s:2947:"{"JMcolorVersion":"#017eba","JMpageBackground":"#f4f4f4","JMcomponentBackground":"#ffffff","JMcomponentBorder":"#e7e7e7","JMbaseFontColor":"#898989","JMarticleFontColor":"#2f2f2f","JMtopbarBackground":"#ffffff","JMtopbarBorder":"#e7e7e7","JMtopbarFontColor":"#898989","JMtopmenuBackground":"#ffffff","JMtopmenuBorder":"#e7e7e7","JMtopmenuFontColor":"#017eba","JMmoduleBackground":"#ffffff","JMmoduleBorder":"#e7e7e7","JMmoduleFontColor":"#898989","JMcolorBox1Background":"#017eba","JMcolorBox2Background":"#a0b046","JMcolorBox3Background":"#f78145","JMfooterBackground":"#e7e7e7","JMfooterBorder":"#dedede","JMfooterFontColor":"#898989","logo":"","logoText":"Edusharity","siteDescription":"Search and sharing resource system for accademic people","fontSizeSwitcher":"0","backToTop":"1","favIconImg":"","JMfluidGridContainerLg":"1170px","JMbaseSpace":"30px","columnLeftWidth":"3","columnRightWidth":"3","responsiveLayout":"1","DisableComponentDisplay":["435"],"layout":"default","JMbaseFontSize":"16px","bodyFontType":"2;bodyGoogleWebFontUrl;bodyGoogleWebFontFamily","bodyFontFamily":"Arial, Helvetica, sans-serif","bodyCustomFont":"Tahoma","bodyGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","bodyGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMtopmenuFontSize":"16px","djmenuFontType":"2;djmenuGoogleWebFontUrl;djmenuGoogleWebFontFamily","djmenuFontFamily":"Tahoma","djmenuCustomFont":"Tahoma","djmenuGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","djmenuGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMmoduleTitleFontSize":"20px","headingsFontType":"2;headingsGoogleWebFontUrl;headingsGoogleWebFontFamily","headingsFontFamily":"Arial, Helvetica, sans-serif","headingsCustomFont":"Tahoma","headingsGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","headingsGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMarticleTitleFontSize":"32px","articlesFontType":"0;articlesFontFamily","articlesFontFamily":"Arial, Helvetica, sans-serif","articlesCustomFont":"Tahoma","articlesGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","articlesGoogleWebFontFamily":"''Lato'', ''sans-serif''","advancedFontSize":"50px","advancedFontType":"0;advancedFontFamily","advancedFontFamily":"Arial, Helvetica, sans-serif","advancedCustomFont":"Tahoma","advancedGoogleWebFontUrl":"","advancedGoogleWebFontFamily":"","advancedSelectors":"","devmode":"0","themermode":"1","themerlogin":"0","codeInjection":"<script><\\/script>","cssCompress":"0","jsCompress":"0","skipCompress":"","config":"","JMbaseFontFamily":"''Lato'', ''sans-serif''","JMmoduleTitleFontFamily":"''Lato'', ''sans-serif''","JMtopmenuFontFamily":"''Lato'', ''sans-serif''","JMarticleTitleFontFamily":"Arial, Helvetica, sans-serif"}";}}s:5:"users";O:8:"stdClass":1:{s:5:"login";O:8:"stdClass":1:{s:4:"form";O:8:"stdClass":2:{s:4:"data";a:1:{s:6:"return";s:39:"index.php?option=com_users&view=profile";}s:6:"return";s:20:"index.php?Itemid=435";}}}}}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"554";s:4:"name";s:10:"Super User";s:8:"username";s:8:"castronu";s:5:"email";s:18:"castronu@gmail.com";s:8:"password";s:60:"$2y$10$oYyZTvAYMYKsACIRgcctseSVems.y0EsCZRG/saCoq2H6li/TMI5y";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-10-10 21:47:10";s:13:"lastvisitDate";s:19:"2014-10-11 17:24:20";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:10:"jsonEncode";a:0:{}s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"bf0d284bbfc07acfbe869e319ad66b41";}', 554, 'castronu');
+('b7k91pk98e6jpic4770upnv105', 1, 0, '1413061006', '__default|a:8:{s:15:"session.counter";i:21;s:19:"session.timer.start";i:1413060798;s:18:"session.timer.last";i:1413061006;s:17:"session.timer.now";i:1413061006;s:22:"session.client.browser";s:103:"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":4:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:11:"com_modules";O:8:"stdClass":3:{s:4:"edit";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":1:{s:4:"data";N;}}s:3:"add";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:12:"extension_id";N;s:6:"params";N;}}s:7:"modules";O:8:"stdClass":4:{s:6:"filter";O:8:"stdClass":8:{s:18:"client_id_previous";i:0;s:6:"search";s:4:"html";s:6:"access";i:0;s:5:"state";s:0:"";s:8:"position";s:0:"";s:6:"module";s:0:"";s:9:"client_id";i:0;s:8:"language";s:0:"";}s:8:"ordercol";s:8:"position";s:9:"orderdirn";s:3:"asc";s:10:"limitstart";i:0;}}s:9:"com_menus";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:4:"type";N;s:4:"link";N;s:4:"data";N;s:2:"id";a:1:{i:0;i:784;}}}}s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";i:20;}}}}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"554";s:4:"name";s:10:"Super User";s:8:"username";s:8:"castronu";s:5:"email";s:18:"castronu@gmail.com";s:8:"password";s:60:"$2y$10$oYyZTvAYMYKsACIRgcctseSVems.y0EsCZRG/saCoq2H6li/TMI5y";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-10-10 21:47:10";s:13:"lastvisitDate";s:19:"2014-10-11 20:51:47";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:10:"jsonEncode";a:0:{}s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"3650b3fd48aac39ce57c92fe574e6628";}', 554, 'castronu'),
+('gvj6671fi7p84el5tekrnrkl33', 0, 0, '1413061032', '__default|a:8:{s:15:"session.counter";i:22;s:19:"session.timer.start";i:1413060663;s:18:"session.timer.last";i:1413061032;s:17:"session.timer.now";i:1413061032;s:22:"session.client.browser";s:103:"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":2:{s:11:"jm-services";O:8:"stdClass":1:{s:6:"themer";O:8:"stdClass":1:{s:5:"state";s:2947:"{"JMcolorVersion":"#017eba","JMpageBackground":"#f4f4f4","JMcomponentBackground":"#ffffff","JMcomponentBorder":"#e7e7e7","JMbaseFontColor":"#898989","JMarticleFontColor":"#2f2f2f","JMtopbarBackground":"#ffffff","JMtopbarBorder":"#e7e7e7","JMtopbarFontColor":"#898989","JMtopmenuBackground":"#ffffff","JMtopmenuBorder":"#e7e7e7","JMtopmenuFontColor":"#017eba","JMmoduleBackground":"#ffffff","JMmoduleBorder":"#e7e7e7","JMmoduleFontColor":"#898989","JMcolorBox1Background":"#017eba","JMcolorBox2Background":"#a0b046","JMcolorBox3Background":"#f78145","JMfooterBackground":"#e7e7e7","JMfooterBorder":"#dedede","JMfooterFontColor":"#898989","logo":"","logoText":"Edusharity","siteDescription":"Search and sharing resource system for accademic people","fontSizeSwitcher":"0","backToTop":"1","favIconImg":"","JMfluidGridContainerLg":"1170px","JMbaseSpace":"30px","columnLeftWidth":"3","columnRightWidth":"3","responsiveLayout":"1","DisableComponentDisplay":["435"],"layout":"default","JMbaseFontSize":"16px","bodyFontType":"2;bodyGoogleWebFontUrl;bodyGoogleWebFontFamily","bodyFontFamily":"Arial, Helvetica, sans-serif","bodyCustomFont":"Tahoma","bodyGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","bodyGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMtopmenuFontSize":"16px","djmenuFontType":"2;djmenuGoogleWebFontUrl;djmenuGoogleWebFontFamily","djmenuFontFamily":"Tahoma","djmenuCustomFont":"Tahoma","djmenuGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","djmenuGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMmoduleTitleFontSize":"20px","headingsFontType":"2;headingsGoogleWebFontUrl;headingsGoogleWebFontFamily","headingsFontFamily":"Arial, Helvetica, sans-serif","headingsCustomFont":"Tahoma","headingsGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","headingsGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMarticleTitleFontSize":"32px","articlesFontType":"0;articlesFontFamily","articlesFontFamily":"Arial, Helvetica, sans-serif","articlesCustomFont":"Tahoma","articlesGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","articlesGoogleWebFontFamily":"''Lato'', ''sans-serif''","advancedFontSize":"50px","advancedFontType":"0;advancedFontFamily","advancedFontFamily":"Arial, Helvetica, sans-serif","advancedCustomFont":"Tahoma","advancedGoogleWebFontUrl":"","advancedGoogleWebFontFamily":"","advancedSelectors":"","devmode":"0","themermode":"1","themerlogin":"0","codeInjection":"<script><\\/script>","cssCompress":"0","jsCompress":"0","skipCompress":"","config":"","JMbaseFontFamily":"''Lato'', ''sans-serif''","JMmoduleTitleFontFamily":"''Lato'', ''sans-serif''","JMtopmenuFontFamily":"''Lato'', ''sans-serif''","JMarticleTitleFontFamily":"Arial, Helvetica, sans-serif"}";}}s:5:"users";O:8:"stdClass":1:{s:5:"login";O:8:"stdClass":1:{s:4:"form";O:8:"stdClass":2:{s:6:"return";s:20:"index.php?Itemid=435";s:4:"data";a:0:{}}}}}}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"554";s:4:"name";s:10:"Super User";s:8:"username";s:8:"castronu";s:5:"email";s:18:"castronu@gmail.com";s:8:"password";s:60:"$2y$10$oYyZTvAYMYKsACIRgcctseSVems.y0EsCZRG/saCoq2H6li/TMI5y";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-10-10 21:47:10";s:13:"lastvisitDate";s:19:"2014-10-11 18:54:17";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:10:"jsonEncode";a:0:{}s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"c20286602d039813acfc26d22b3acfa0";}', 554, 'castronu'),
+('v8c6qpebq8576udmv9i1jfssf2', 0, 1, '1413060708', '__default|a:8:{s:15:"session.counter";i:1;s:19:"session.timer.start";i:1413060708;s:18:"session.timer.last";i:1413060708;s:17:"session.timer.now";i:1413060708;s:22:"session.client.browser";s:103:"Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:11:"jm-services";O:8:"stdClass":1:{s:6:"themer";O:8:"stdClass":1:{s:5:"state";s:2947:"{"JMcolorVersion":"#017eba","JMpageBackground":"#f4f4f4","JMcomponentBackground":"#ffffff","JMcomponentBorder":"#e7e7e7","JMbaseFontColor":"#898989","JMarticleFontColor":"#2f2f2f","JMtopbarBackground":"#ffffff","JMtopbarBorder":"#e7e7e7","JMtopbarFontColor":"#898989","JMtopmenuBackground":"#ffffff","JMtopmenuBorder":"#e7e7e7","JMtopmenuFontColor":"#017eba","JMmoduleBackground":"#ffffff","JMmoduleBorder":"#e7e7e7","JMmoduleFontColor":"#898989","JMcolorBox1Background":"#017eba","JMcolorBox2Background":"#a0b046","JMcolorBox3Background":"#f78145","JMfooterBackground":"#e7e7e7","JMfooterBorder":"#dedede","JMfooterFontColor":"#898989","logo":"","logoText":"Edusharity","siteDescription":"Search and sharing resource system for accademic people","fontSizeSwitcher":"0","backToTop":"1","favIconImg":"","JMfluidGridContainerLg":"1170px","JMbaseSpace":"30px","columnLeftWidth":"3","columnRightWidth":"3","responsiveLayout":"1","DisableComponentDisplay":["435"],"layout":"default","JMbaseFontSize":"16px","bodyFontType":"2;bodyGoogleWebFontUrl;bodyGoogleWebFontFamily","bodyFontFamily":"Arial, Helvetica, sans-serif","bodyCustomFont":"Tahoma","bodyGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","bodyGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMtopmenuFontSize":"16px","djmenuFontType":"2;djmenuGoogleWebFontUrl;djmenuGoogleWebFontFamily","djmenuFontFamily":"Tahoma","djmenuCustomFont":"Tahoma","djmenuGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","djmenuGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMmoduleTitleFontSize":"20px","headingsFontType":"2;headingsGoogleWebFontUrl;headingsGoogleWebFontFamily","headingsFontFamily":"Arial, Helvetica, sans-serif","headingsCustomFont":"Tahoma","headingsGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","headingsGoogleWebFontFamily":"''Lato'', ''sans-serif''","JMarticleTitleFontSize":"32px","articlesFontType":"0;articlesFontFamily","articlesFontFamily":"Arial, Helvetica, sans-serif","articlesCustomFont":"Tahoma","articlesGoogleWebFontUrl":"http:\\/\\/fonts.googleapis.com\\/css?family=Lato:400,300,300italic,400italic,700,700italic,900,900italic","articlesGoogleWebFontFamily":"''Lato'', ''sans-serif''","advancedFontSize":"50px","advancedFontType":"0;advancedFontFamily","advancedFontFamily":"Arial, Helvetica, sans-serif","advancedCustomFont":"Tahoma","advancedGoogleWebFontUrl":"","advancedGoogleWebFontFamily":"","advancedSelectors":"","devmode":"0","themermode":"1","themerlogin":"0","codeInjection":"<script><\\/script>","cssCompress":"0","jsCompress":"0","skipCompress":"","config":"","JMbaseFontFamily":"''Lato'', ''sans-serif''","JMmoduleTitleFontFamily":"''Lato'', ''sans-serif''","JMtopmenuFontFamily":"''Lato'', ''sans-serif''","JMarticleTitleFontFamily":"Arial, Helvetica, sans-serif"}";}}}}s:4:"user";O:5:"JUser":25:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:2:"13";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:1:{i:0;s:1:"1";}s:14:"\\0\\0\\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"f821825ea69d0d835d18507a1c7bb450";}', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_tags`
+-- Table structure for table `b1978_tags`
 --
 
-CREATE TABLE `b1978_tags` (
+CREATE TABLE IF NOT EXISTS `b1978_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
@@ -2860,7 +2869,7 @@ CREATE TABLE `b1978_tags` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Dump dei dati per la tabella `b1978_tags`
+-- Dumping data for table `b1978_tags`
 --
 
 INSERT INTO `b1978_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`, `publish_up`, `publish_down`) VALUES
@@ -2875,10 +2884,10 @@ INSERT INTO `b1978_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `tit
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_template_styles`
+-- Table structure for table `b1978_template_styles`
 --
 
-CREATE TABLE `b1978_template_styles` (
+CREATE TABLE IF NOT EXISTS `b1978_template_styles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `template` varchar(50) NOT NULL DEFAULT '',
   `client_id` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -2891,7 +2900,7 @@ CREATE TABLE `b1978_template_styles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Dump dei dati per la tabella `b1978_template_styles`
+-- Dumping data for table `b1978_template_styles`
 --
 
 INSERT INTO `b1978_template_styles` (`id`, `template`, `client_id`, `home`, `title`, `params`) VALUES
@@ -2908,10 +2917,10 @@ INSERT INTO `b1978_template_styles` (`id`, `template`, `client_id`, `home`, `tit
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_ucm_base`
+-- Table structure for table `b1978_ucm_base`
 --
 
-CREATE TABLE `b1978_ucm_base` (
+CREATE TABLE IF NOT EXISTS `b1978_ucm_base` (
   `ucm_id` int(10) unsigned NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
@@ -2923,7 +2932,7 @@ CREATE TABLE `b1978_ucm_base` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_ucm_base`
+-- Dumping data for table `b1978_ucm_base`
 --
 
 INSERT INTO `b1978_ucm_base` (`ucm_id`, `ucm_item_id`, `ucm_type_id`, `ucm_language_id`) VALUES
@@ -2964,10 +2973,10 @@ INSERT INTO `b1978_ucm_base` (`ucm_id`, `ucm_item_id`, `ucm_type_id`, `ucm_langu
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_ucm_content`
+-- Table structure for table `b1978_ucm_content`
 --
 
-CREATE TABLE `b1978_ucm_content` (
+CREATE TABLE IF NOT EXISTS `b1978_ucm_content` (
   `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(255) NOT NULL,
@@ -3016,7 +3025,7 @@ CREATE TABLE `b1978_ucm_content` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Contains core content data in name spaced fields' AUTO_INCREMENT=35 ;
 
 --
--- Dump dei dati per la tabella `b1978_ucm_content`
+-- Dumping data for table `b1978_ucm_content`
 --
 
 INSERT INTO `b1978_ucm_content` (`core_content_id`, `core_type_alias`, `core_title`, `core_alias`, `core_body`, `core_state`, `core_checked_out_time`, `core_checked_out_user_id`, `core_access`, `core_params`, `core_featured`, `core_metadata`, `core_created_user_id`, `core_created_by_alias`, `core_created_time`, `core_modified_user_id`, `core_modified_time`, `core_language`, `core_publish_up`, `core_publish_down`, `core_content_item_id`, `asset_id`, `core_images`, `core_urls`, `core_hits`, `core_version`, `core_ordering`, `core_metakey`, `core_metadesc`, `core_catid`, `core_xreference`, `core_type_id`) VALUES
@@ -3058,10 +3067,10 @@ INSERT INTO `b1978_ucm_content` (`core_content_id`, `core_type_alias`, `core_tit
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_ucm_history`
+-- Table structure for table `b1978_ucm_history`
 --
 
-CREATE TABLE `b1978_ucm_history` (
+CREATE TABLE IF NOT EXISTS `b1978_ucm_history` (
   `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ucm_item_id` int(10) unsigned NOT NULL,
   `ucm_type_id` int(10) unsigned NOT NULL,
@@ -3078,7 +3087,7 @@ CREATE TABLE `b1978_ucm_history` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=325 ;
 
 --
--- Dump dei dati per la tabella `b1978_ucm_history`
+-- Dumping data for table `b1978_ucm_history`
 --
 
 INSERT INTO `b1978_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `version_note`, `save_date`, `editor_user_id`, `character_count`, `sha1_hash`, `version_data`, `keep_forever`) VALUES
@@ -3330,10 +3339,10 @@ INSERT INTO `b1978_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `ve
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_updates`
+-- Table structure for table `b1978_updates`
 --
 
-CREATE TABLE `b1978_updates` (
+CREATE TABLE IF NOT EXISTS `b1978_updates` (
   `update_id` int(11) NOT NULL AUTO_INCREMENT,
   `update_site_id` int(11) DEFAULT '0',
   `extension_id` int(11) DEFAULT '0',
@@ -3352,7 +3361,7 @@ CREATE TABLE `b1978_updates` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Available Updates' AUTO_INCREMENT=59 ;
 
 --
--- Dump dei dati per la tabella `b1978_updates`
+-- Dumping data for table `b1978_updates`
 --
 
 INSERT INTO `b1978_updates` (`update_id`, `update_site_id`, `extension_id`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`, `extra_query`) VALUES
@@ -3418,10 +3427,10 @@ INSERT INTO `b1978_updates` (`update_id`, `update_site_id`, `extension_id`, `nam
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_update_sites`
+-- Table structure for table `b1978_update_sites`
 --
 
-CREATE TABLE `b1978_update_sites` (
+CREATE TABLE IF NOT EXISTS `b1978_update_sites` (
   `update_site_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT '',
   `type` varchar(20) DEFAULT '',
@@ -3433,7 +3442,7 @@ CREATE TABLE `b1978_update_sites` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Update Sites' AUTO_INCREMENT=8 ;
 
 --
--- Dump dei dati per la tabella `b1978_update_sites`
+-- Dumping data for table `b1978_update_sites`
 --
 
 INSERT INTO `b1978_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
@@ -3446,17 +3455,17 @@ INSERT INTO `b1978_update_sites` (`update_site_id`, `name`, `type`, `location`, 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_update_sites_extensions`
+-- Table structure for table `b1978_update_sites_extensions`
 --
 
-CREATE TABLE `b1978_update_sites_extensions` (
+CREATE TABLE IF NOT EXISTS `b1978_update_sites_extensions` (
   `update_site_id` int(11) NOT NULL DEFAULT '0',
   `extension_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`update_site_id`,`extension_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
 
 --
--- Dump dei dati per la tabella `b1978_update_sites_extensions`
+-- Dumping data for table `b1978_update_sites_extensions`
 --
 
 INSERT INTO `b1978_update_sites_extensions` (`update_site_id`, `extension_id`) VALUES
@@ -3469,10 +3478,10 @@ INSERT INTO `b1978_update_sites_extensions` (`update_site_id`, `extension_id`) V
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_usergroups`
+-- Table structure for table `b1978_usergroups`
 --
 
-CREATE TABLE `b1978_usergroups` (
+CREATE TABLE IF NOT EXISTS `b1978_usergroups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
@@ -3486,7 +3495,7 @@ CREATE TABLE `b1978_usergroups` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Dump dei dati per la tabella `b1978_usergroups`
+-- Dumping data for table `b1978_usergroups`
 --
 
 INSERT INTO `b1978_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
@@ -3503,10 +3512,10 @@ INSERT INTO `b1978_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_users`
+-- Table structure for table `b1978_users`
 --
 
-CREATE TABLE `b1978_users` (
+CREATE TABLE IF NOT EXISTS `b1978_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `username` varchar(150) NOT NULL DEFAULT '',
@@ -3531,11 +3540,11 @@ CREATE TABLE `b1978_users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=575 ;
 
 --
--- Dump dei dati per la tabella `b1978_users`
+-- Dumping data for table `b1978_users`
 --
 
 INSERT INTO `b1978_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(554, 'Super User', 'castronu', 'castronu@gmail.com', '$2y$10$oYyZTvAYMYKsACIRgcctseSVems.y0EsCZRG/saCoq2H6li/TMI5y', 0, 1, '2014-10-10 21:47:10', '2014-10-11 18:54:17', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+(554, 'Super User', 'castronu', 'castronu@gmail.com', '$2y$10$oYyZTvAYMYKsACIRgcctseSVems.y0EsCZRG/saCoq2H6li/TMI5y', 0, 1, '2014-10-10 21:47:10', '2014-10-11 20:53:20', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
 (555, 'twf97541', 'twf97541', 'twf97541@qoika.com', '$2y$10$tx/WGaZiw7qLSL5FZPGk/e8awBE2UFHhUhktMexqOHpnJc.6vjeee', 0, 0, '2014-10-10 23:36:15', '2014-10-10 23:50:43', '', '{}', '0000-00-00 00:00:00', 0, '', '', 0),
 (556, 'rox66984', 'rox66984', 'rox66984@qoika.com', '$2y$10$Pq.gURderS20G/N8qSPyLec4smLFA4WN8vqMpz0p7imw344PiBlpm', 0, 0, '2014-10-10 23:40:12', '2014-10-10 23:41:30', '', '{"editor":"","timezone":"","language":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (557, 'swr34115@qoika.com', 'swr34115@qoika.com', 'swr34115@qoika.com', '$2y$10$ZQRyb1l1BISIBYoGO86huO/wPrQcXkQv/EdVwNhy7cyDPIjbQEObC', 1, 0, '2014-10-11 02:18:43', '0000-00-00 00:00:00', '07b347bad8484d53ab3620bfb4b07d6d', '{}', '0000-00-00 00:00:00', 0, '', '', 0),
@@ -3560,10 +3569,10 @@ INSERT INTO `b1978_users` (`id`, `name`, `username`, `email`, `password`, `block
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_user_keys`
+-- Table structure for table `b1978_user_keys`
 --
 
-CREATE TABLE `b1978_user_keys` (
+CREATE TABLE IF NOT EXISTS `b1978_user_keys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
@@ -3581,10 +3590,10 @@ CREATE TABLE `b1978_user_keys` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_user_notes`
+-- Table structure for table `b1978_user_notes`
 --
 
-CREATE TABLE `b1978_user_notes` (
+CREATE TABLE IF NOT EXISTS `b1978_user_notes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -3608,10 +3617,10 @@ CREATE TABLE `b1978_user_notes` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_user_profiles`
+-- Table structure for table `b1978_user_profiles`
 --
 
-CREATE TABLE `b1978_user_profiles` (
+CREATE TABLE IF NOT EXISTS `b1978_user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) NOT NULL,
   `profile_value` text NOT NULL,
@@ -3620,7 +3629,7 @@ CREATE TABLE `b1978_user_profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Simple user profile storage table';
 
 --
--- Dump dei dati per la tabella `b1978_user_profiles`
+-- Dumping data for table `b1978_user_profiles`
 --
 
 INSERT INTO `b1978_user_profiles` (`user_id`, `profile_key`, `profile_value`, `ordering`) VALUES
@@ -3702,17 +3711,17 @@ INSERT INTO `b1978_user_profiles` (`user_id`, `profile_key`, `profile_value`, `o
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_user_usergroup_map`
+-- Table structure for table `b1978_user_usergroup_map`
 --
 
-CREATE TABLE `b1978_user_usergroup_map` (
+CREATE TABLE IF NOT EXISTS `b1978_user_usergroup_map` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
   `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id',
   PRIMARY KEY (`user_id`,`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `b1978_user_usergroup_map`
+-- Dumping data for table `b1978_user_usergroup_map`
 --
 
 INSERT INTO `b1978_user_usergroup_map` (`user_id`, `group_id`) VALUES
@@ -3741,10 +3750,10 @@ INSERT INTO `b1978_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_viewlevels`
+-- Table structure for table `b1978_viewlevels`
 --
 
-CREATE TABLE `b1978_viewlevels` (
+CREATE TABLE IF NOT EXISTS `b1978_viewlevels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `title` varchar(100) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
@@ -3754,7 +3763,7 @@ CREATE TABLE `b1978_viewlevels` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dump dei dati per la tabella `b1978_viewlevels`
+-- Dumping data for table `b1978_viewlevels`
 --
 
 INSERT INTO `b1978_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
@@ -3767,10 +3776,10 @@ INSERT INTO `b1978_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `b1978_weblinks`
+-- Table structure for table `b1978_weblinks`
 --
 
-CREATE TABLE `b1978_weblinks` (
+CREATE TABLE IF NOT EXISTS `b1978_weblinks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(11) NOT NULL DEFAULT '0',
   `title` varchar(250) NOT NULL DEFAULT '',
@@ -3813,10 +3822,10 @@ CREATE TABLE `b1978_weblinks` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Courses`
+-- Table structure for table `Courses`
 --
 
-CREATE TABLE `Courses` (
+CREATE TABLE IF NOT EXISTS `Courses` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `CourseName` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`),
@@ -3824,7 +3833,7 @@ CREATE TABLE `Courses` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=258 ;
 
 --
--- Dump dei dati per la tabella `Courses`
+-- Dumping data for table `Courses`
 --
 
 INSERT INTO `Courses` (`ID`, `CourseName`) VALUES
@@ -3896,10 +3905,10 @@ INSERT INTO `Courses` (`ID`, `CourseName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `CoursesAndDomains`
+-- Table structure for table `CoursesAndDomains`
 --
 
-CREATE TABLE `CoursesAndDomains` (
+CREATE TABLE IF NOT EXISTS `CoursesAndDomains` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `IDDomain` int(11) NOT NULL,
   `IDCourse` int(11) NOT NULL,
@@ -3909,7 +3918,7 @@ CREATE TABLE `CoursesAndDomains` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
 
 --
--- Dump dei dati per la tabella `CoursesAndDomains`
+-- Dumping data for table `CoursesAndDomains`
 --
 
 INSERT INTO `CoursesAndDomains` (`ID`, `IDDomain`, `IDCourse`) VALUES
@@ -3990,10 +3999,10 @@ INSERT INTO `CoursesAndDomains` (`ID`, `IDDomain`, `IDCourse`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Domains`
+-- Table structure for table `Domains`
 --
 
-CREATE TABLE `Domains` (
+CREATE TABLE IF NOT EXISTS `Domains` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `DomainName` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`),
@@ -4001,7 +4010,7 @@ CREATE TABLE `Domains` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dump dei dati per la tabella `Domains`
+-- Dumping data for table `Domains`
 --
 
 INSERT INTO `Domains` (`ID`, `DomainName`) VALUES
@@ -4013,10 +4022,10 @@ INSERT INTO `Domains` (`ID`, `DomainName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `RESOURCES`
+-- Table structure for table `RESOURCES`
 --
 
-CREATE TABLE `RESOURCES` (
+CREATE TABLE IF NOT EXISTS `RESOURCES` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(1000) NOT NULL,
   `Link` varchar(1000) DEFAULT NULL,
@@ -4026,7 +4035,7 @@ CREATE TABLE `RESOURCES` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=86 ;
 
 --
--- Dump dei dati per la tabella `RESOURCES`
+-- Dumping data for table `RESOURCES`
 --
 
 INSERT INTO `RESOURCES` (`ID`, `Title`, `Link`, `AuthorId`, `Fingerprint`) VALUES
@@ -4072,12 +4081,16 @@ INSERT INTO `RESOURCES` (`ID`, `Title`, `Link`, `AuthorId`, `Fingerprint`) VALUE
 (85, 'fdhshjkb', 'tjutnu', 554, '''93'', ''141'', ''82'', ''201'', ''84'', ''256'', ''81'', ''133''');
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `CoursesAndDomains`
+-- Constraints for table `CoursesAndDomains`
 --
 ALTER TABLE `CoursesAndDomains`
   ADD CONSTRAINT `coursesanddomains_ibfk_1` FOREIGN KEY (`IDDomain`) REFERENCES `Domains` (`ID`),
   ADD CONSTRAINT `coursesanddomains_ibfk_2` FOREIGN KEY (`IDCourse`) REFERENCES `Courses` (`ID`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
