@@ -18,6 +18,28 @@
 
 <?php
 
+$query=$_POST["query"];
+
+echo "Your query is: $query <br/>";
+
+$queryTokens = array();
+
+$delim = ' ,.!?:;-';
+
+$tok = strtok($query, $delim);
+
+while ($tok != false) {
+    array_push($queryTokens, $tok);
+    $tok = strtok($delim);
+}
+
+print_r ($queryTokens);
+
+?>
+
+
+<?php
+
 $db=mysql_connect("localhost","root","root");
 if(!$db)
 {
@@ -80,7 +102,7 @@ echo "The result: '$result' <br/>";
 
 $words = array();
 
-$delim = ' ,.!?:;';
+$delim = ' ,.!?:;-';
 $stopWords = array("the", "a", "of", "an", "in");
 
 $tok= strtok($concatenatedTitles, $delim);
@@ -117,6 +139,8 @@ for ($i=0; $i<$num; $i++) {
         $tok = strtok($delim);
     }
 }
+
+
 
 //compute scalar product with the query and choose the heighest score
 
