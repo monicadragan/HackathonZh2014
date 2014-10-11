@@ -2,47 +2,285 @@
 
 <form>
   <fields name="testprofile">
-    <fieldset name="testprofile" addfieldpath="/administrator/components/com_users/models/fields"
+    <fieldset name="testprofile"
       label="PLG_USER_TESTPROFILE_SLIDER_LABEL">
       <field
-        name="organization"
+        name="University"
         type="text"
-        id="organization"
-        label="PLG_USER_TESTPROFILE_FIELD_ORGANIZATION_LABEL" />
-        <field name="toppings" type="checkboxes">
-    <option value="anch">Anchovies</option>
-    <option value="chor">Chorizo</option>
-    <option value="on">Onions</option>
-    <option value="mush">Mushrooms</option>
-</field>
+        id="university"
+        label="PLG_USER_TESTPROFILE_FIELD_UNIVERSITY_LABEL" />
+         <field
+        name="degree program"
+        type="text"
+        id="degree"
+        label="PLG_USER_TESTPROFILE_FIELD_DEGREE_LABEL" />
 
-<field name="myfield" type="chk" default="10" label="Select an article" query="SELECT id, title FROM b1978_content" key_field="id" value_field="title" required="true">
-<option value="">Please select your option</option>
-</field>
+<field name="Analysis" type="checkbox"
+    description="Analysis"
+    label="Analysis"
+    value="1"
+/>
+<field name="Linearalgebra" type="checkbox"
+    description="Linear algebra"
+    label="Linear algebra"
+    value="1"
+/>
+<field name="Geometry" type="checkbox"
+    description="Geometry"
+    label="Geometry"
+    value="1"
+/>
+<field name="Generalchemistry" type="checkbox"
+    description="General chemistry"
+    label="General chemistry"
+    value="1"
+/>
+<field name="Programming" type="checkbox"
+    description="Programming"
+    label="Programming"
+    value="1"
+/>
+<field name="Discreteoptimization" type="checkbox"
+    description="Discrete optimization"
+    label="Discrete optimization"
+    value="1"
+/>
+<field name="Probability" type="checkbox"
+    description="Probability"
+    label="Probability"
+    value="1"
+/>
+<field name="Statistics" type="checkbox"
+    description="Statistics"
+    label="Statistics"
+    value="1"
+/>
+<field name="Topology" type="checkbox"
+    description="Topology"
+    label="Topology"
+    value="1"
+/>
+<field name="Algorithms" type="checkbox"
+    description="Algorithms"
+    label="Algorithms"
+    value="1"
+/>
+<field name="Fonctionalanalysis" type="checkbox"
+    description="Fonctional analysis"
+    label="Fonctional analysis"
+    value="1"
+/>
+<field name="Geometryandgroups" type="checkbox"
+    description="Geometry and groups"
+    label="Geometry and groups"
+    value="1"
+/>
+<field name="Graphtheory" type="checkbox"
+    description="Graph theory"
+    label="Graph theory"
+    value="1"
+/>
+<field name="Linearmodels" type="checkbox"
+    description="Linear models"
+    label="Linear models"
+    value="1"
+/>
+<field name="Mathematicallogic" type="checkbox"
+    description="Mathematical logic"
+    label="Mathematical logic"
+    value="1"
+/>
+<field name="Timeseries" type="checkbox"
+    description="Time series"
+    label="Time series"
+    value="1"
+/>
 
-<field name="myfile" type="filelist" default="" label="Select a file" description="" directory="administrator" filter="" exclude="" stripext="" />
-<field name="mylistvalue" type="groupedlist" default="" label="Select an option" description="">
-  <group label="Group 1">
-    <option value="0">Option 1</option>
-    <option value="1">Option 2</option>
-  </group>
-  <group label="Group 2">
-    <option value="3">Option 3</option>
-    <option value="4">Option 4</option>
-  </group>
-  <option value="5">Option 5</option>
-  <option value="6">Option 6</option>
-</field>
-<field name="mylistvalue" type="list" default="" label="Select an option" description="">
-  <option value="0">Option 1</option>
-  <option value="1">Option 2</option>
-</field>
-<field name="mymenuitem" type="menuitem" default="45" label="Select a menu item" description="Select a menu item" />
+<field name="Analysis" type="checkbox"
+    description="Analysis"
+    label="Analysis"
+    value="1"
+/>
+<field name="Linearalgebra" type="checkbox"
+    description="Linear algebra"
+    label="Linear algebra"
+    value="1"
+/>
+<field name="Geometry" type="checkbox"
+    description="Geometry"
+    label="Geometry"
+    value="1"
+/>
+<field name="Generalchemistry" type="checkbox"
+    description="General chemistry"
+    label="General chemistry"
+    value="1"
+/>
+<field name="Programming" type="checkbox"
+    description="Programming"
+    label="Programming"
+    value="1"
+/>
+<field name="Discreteoptimization" type="checkbox"
+    description="Discrete optimization"
+    label="Discrete optimization"
+    value="1"
+/>
+<field name="Probability" type="checkbox"
+    description="Probability"
+    label="Probability"
+    value="1"
+/>
+<field name="Statistics" type="checkbox"
+    description="Statistics"
+    label="Statistics"
+    value="1"
+/>
+<field name="Topology" type="checkbox"
+    description="Topology"
+    label="Topology"
+    value="1"
+/>
+<field name="Algorithms" type="checkbox"
+    description="Algorithms"
+    label="Algorithms"
+    value="1"
+/>
+<field name="Fonctionalanalysis" type="checkbox"
+    description="Fonctional analysis"
+    label="Fonctional analysis"
+    value="1"
+/>
+<field name="Geometryandgroups" type="checkbox"
+    description="Geometry and groups"
+    label="Geometry and groups"
+    value="1"
+/>
+<field name="Graphtheory" type="checkbox"
+    description="Graph theory"
+    label="Graph theory"
+    value="1"
+/>
+<field name="Linearmodels" type="checkbox"
+    description="Linear models"
+    label="Linear models"
+    value="1"
+/>
+<field name="Mathematicallogic" type="checkbox"
+    description="Mathematical logic"
+    label="Mathematical logic"
+    value="1"
+/>
+<field name="Timeseries" type="checkbox"
+    description="Time series"
+    label="Time series"
+    value="1"
+/>
+localhost:/Users/castronu/Google Drive/Hackathon Zurich 2014
+$ ./createOption.sh CS
+<field name="Analysis" type="checkbox"
+    description="Analysis"
+    label="Analysis"
+    value="1"
+/>
+<field name="Linearalgebra" type="checkbox"
+    description="Linear algebra"
+    label="Linear algebra"
+    value="1"
+/>
+<field name="Generalphysics" type="checkbox"
+    description="General physics"
+    label="General physics"
+    value="1"
+/>
+<field name="Electronics" type="checkbox"
+    description="Electronics"
+    label="Electronics"
+    value="1"
+/>
+<field name="Compilers" type="checkbox"
+    description="Compilers"
+    label="Compilers"
+    value="1"
+/>
+<field name="Operatingsystems" type="checkbox"
+    description="Operating systems"
+    label="Operating systems"
+    value="1"
+/>
+<field name="Real-timesystems" type="checkbox"
+    description="Real-time systems"
+    label="Real-time systems"
+    value="1"
+/>
+<field name="Embeddedsystems" type="checkbox"
+    description="Embedded systems"
+    label="Embedded systems"
+    value="1"
+/>
+<field name="Distributedsystems" type="checkbox"
+    description="Distributed systems"
+    label="Distributed systems"
+    value="1"
+/>
+<field name="Computernetworks" type="checkbox"
+    description="Computer networks"
+    label="Computer networks"
+    value="1"
+/>
+<field name="Computergraphics" type="checkbox"
+    description="Computer graphics"
+    label="Computer graphics"
+    value="1"
+/>
+<field name="Algorithmsdesignandanalysis" type="checkbox"
+    description="Algorithms design and analysis"
+    label="Algorithms design and analysis"
+    value="1"
+/>
+<field name="Probabilitiesandstatistics" type="checkbox"
+    description="Probabilities and statistics"
+    label="Probabilities and statistics"
+    value="1"
+/>
+<field name="Human-computerinteraction" type="checkbox"
+    description="Human-computer interaction"
+    label="Human-computer interaction"
+    value="1"
+/>
+<field name="Introductionstoobjectsorientedprogramming" type="checkbox"
+    description="Introductions to objects oriented programming"
+    label="Introductions to objects oriented programming"
+    value="1"
+/>
+<field name="Functionalprogramming" type="checkbox"
+    description="Functional programming"
+    label="Functional programming"
+    value="1"
+/>
+<field name="Imageprocessing" type="checkbox"
+    description="Image processing"
+    label="Image processing"
+    value="1"
+/>
+<field name="Artificialintelligence" type="checkbox"
+    description="Artificial intelligence"
+    label="Artificial intelligence"
+    value="1"
+/>
+<field name="Machinelearning" type="checkbox"
+    description="Machine learning"
+    label="Machine learning"
+    value="1"
+/>
+<field name="Cryptographyandsecurity" type="checkbox"
+    description="Cryptography and security"
+    label="Cryptography and security"
+    value="1"
+/>
+
     </fieldset>
-    <field name="myradiovalue" type="radio" default="0" label="Select an option" description="">
-  <option value="0">1</option>
-  <option value="1">2</option>
-</field>
+
 
   </fields>
 </form>
