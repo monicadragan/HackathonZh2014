@@ -7,11 +7,11 @@
     </title>
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/font-awesome-4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resources/bootstrap-3.2.0-dist/css/bootstrap.min.css">
 
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script src="../resources/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
 
   </head>
 
@@ -20,7 +20,6 @@
 <div class="container">
   <?php
 
-echo 'Hello ' . htmlspecialchars($_POST["userid"]) . '!';
 $con=mysqli_connect("localhost","root","root","hackzurich");
 // Check connection
 if (mysqli_connect_errno()) {
