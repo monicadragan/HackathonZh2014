@@ -1,5 +1,17 @@
 <?php 
 defined('JPATH_BASE') or die;
+
+$doc = JFactory::getDocument();
+$doc->addScriptDeclaration("
+    // Your jQuery or js script hoes here. ex:
+    (function($){
+        $(document).ready(function(){
+            
+
+            $( '#jform_testprofile_courses' ).css( 'height', '60em' );
+        });
+    })(jQuery);
+");
  
 class plgUserTestprofile extends JPlugin
 {
@@ -40,6 +52,7 @@ class plgUserTestprofile extends JPlugin
  
     function onContentPrepareForm($form, $data)
     {
+
         // Load user_profile plugin language
         $lang = JFactory::getLanguage();
         $lang->load('plg_user_testprofile', JPATH_ADMINISTRATOR);
@@ -75,6 +88,16 @@ class plgUserTestprofile extends JPlugin
                 $tuples = array();
                 $order    = 1;
                 foreach ($data['testprofile'] as $k => $v) {
+
+
+                    /*if k==courses then merge array with comma*/
+                    if ($k=="courses") { 
+                        $subjects=$db->quote($v);
+                        sort($subjects);                      
+                        $v = implode(', ',$subjects);
+
+                    }
+
                     $tuples[] = '('.$userId.', '.$db->quote('testprofile.'.$k).', '.$db->quote($v).', '.$order++.')';
                 }
  
