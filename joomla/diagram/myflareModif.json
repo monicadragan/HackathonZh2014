@@ -1,0 +1,99 @@
+{
+ "name": "myflare",
+ "children": [
+ {
+   "name": "Math",
+   "children": [
+    {"name": "Analysis", "size": 2500},
+    {"name": "Linear algebra", "size": 4000},
+    {"name": "Geometry", "size": 2500},
+    {"name": "General chemistry", "size": 4750},
+    {"name": "Programming", "size": 3250},
+    {"name": "Discrete optimization", "size": 5750},
+    {"name": "Probability", "size": 3250},
+    {"name": "Statistics", "size": 3000},
+    {"name": "Topology", "size": 2500},
+    {"name": "Algorithms", "size": 3000},
+    {"name": "Fonctional analysis", "size": 5250},
+    {"name": "Geometry and groups", "size": 5250},
+    {"name": "Graph theory", "size": 3500},
+    {"name": "Linear models", "size": 3750},
+    {"name": "Mathematical logic", "size": 5000},
+    {"name": "Time series", "size": 3250}
+   ]
+  },
+  {
+   "name": "CS",
+   "children":[
+    {"name": "Analysis", "size": 2500},
+    {"name": "Linear algebra", "size": 4000},
+    {"name": "General physics", "size": 4250},
+    {"name": "Electronics", "size": 3250},
+    {"name": "Compilers", "size": 2750},
+    {"name": "Operating systems", "size": 4750},
+    {"name": "Real-time systems", "size": 4750},
+    {"name": "Embedded systems", "size": 4500},
+    {"name": "Distributed systems", "size": 5250},
+    {"name": "Computer networks", "size": 4750},
+    {"name": "Computer graphics", "size": 4750},
+    {"name": "Algorithms design and analysis", "size": 8000},
+    {"name": "Probabilities and statistics", "size": 7500},
+    {"name": "Human-computer interaction", "size": 7000},
+    {"name": "Introductions to objects oriented programming", "size": 11750},
+    {"name": "Functional programming", "size": 6000},
+    {"name": "Image processing", "size": 4500},
+    {"name": "Artificial intelligence", "size": 6250},
+    {"name": "Machine learning", "size": 4500},
+    {"name": "Cryptography and security", "size": 6750}
+   ]
+  },
+  {
+   "name": "Physics",
+   "children": [
+    {"name": "Analysis", "size": 2500},
+{"name": "Linear algebra", "size": 4000},
+{"name": "Advanced physics", "size": 4500},
+{"name": "General chenistry", "size": 4750},
+{"name": "Numerical analysis", "size": 5000},
+{"name": "Programming", "size": 3250},
+{"name": "Analytical mechanics", "size": 5500},
+{"name": "Computational physics", "size": 5750},
+{"name": "Physics", "size": 2250},
+{"name": "Probabilities and statistics", "size": 7500},
+{"name": "Astrophysics", "size": 3500},
+{"name": "Electronics", "size": 3250},
+{"name": "Quantum physics", "size": 4250},
+{"name": "Classical electrodynamics", "size": 6750},
+{"name": "Statistical physics", "size": 5250},
+{"name": "Biophysics", "size": 3000},
+{"name": "Optics", "size": 2000},
+{"name": "Plasma physics", "size": 4000}
+   ]
+  },
+  {
+   "name": "Biology",
+   "children": [
+    {"name": "General mathematics", "size": 5250},
+    {"name": "General physics", "size": 4250},
+    {"name": "General chemistry", "size": 4750},
+    {"name": "Organic chemistry", "size": 4750},
+    {"name": "General biochemistry", "size": 5500},
+    {"name": "Plant cell biology", "size": 5000},
+    {"name": "Cell and molecular biology", "size": 7000},
+    {"name": "Tissue biology", "size": 4000},
+    {"name": "General and molecular genetics", "size": 8000},
+    {"name": "Microbiology", "size": 3500},
+    {"name": "Zoology", "size": 2250},
+    {"name": "Botany", "size": 2000},
+    {"name": "Data analysis in biology", "size": 6500},
+    {"name": "Principles of statistics", "size": 6500},
+    {"name": "Neurosciences", "size": 3750},
+    {"name": "Immunology", "size": 3000},
+    {"name": "Systems physiology", "size": 5000},
+    {"name": "General ecology", "size": 4250},
+    {"name": "Bioinformatics", "size": 4000},
+    {"name": "Integrative genomics", "size": 5500}
+   ]
+  }
+ ]
+}
