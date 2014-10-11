@@ -19,7 +19,6 @@
 
 <div class="container">
   <?php
-
 $con=mysqli_connect("localhost","root","root","hackzurich");
 // Check connection
 if (mysqli_connect_errno()) {
@@ -31,12 +30,33 @@ $title = mysqli_real_escape_string($con, $_POST['title']);
 $link = mysqli_real_escape_string($con, $_POST['link']);
 $author = mysqli_real_escape_string($con, $_POST['userid']);
 
+/*Getting fingerprint... */
+
+$sql="SELECT * FROM `b1978_user_profiles` where user_id=$author and profile_key='testprofile.courses'";
+$res=mysqli_query($con,$sql);
+$row=mysqli_fetch_array($res);
+
+$fingerprint=mysql_real_escape_string($row['profile_value']);
+
 $sql="INSERT INTO RESOURCES (title, link, AuthorId, Fingerprint)
-VALUES ('$title', '$link', '$author','001100')";
+VALUES ('$title', '$link', '$author','$fingerprint')";
+
+
 
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
 }
+
+
+
+
+
+ 
+
+
+
+
+
 echo "<p class=\"bg-success\">Resource ".$title." Added!</p>";
 
 mysqli_close($con);
