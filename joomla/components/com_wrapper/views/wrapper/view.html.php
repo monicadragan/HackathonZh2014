@@ -77,7 +77,8 @@ class WrapperViewWrapper extends JViewLegacy
 		}
 
 		$url = $params->def('url', '');
-
+		$user = JFactory::getUser();
+        $url = $url.'?userid='.$user->id;
 		if ($params->def('add_scheme', 1))
 		{
 			// Adds 'http://' if none is set

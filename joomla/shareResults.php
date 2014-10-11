@@ -20,7 +20,7 @@
 <div class="container">
   <?php
 
-
+echo 'Hello ' . htmlspecialchars($_POST["userid"]) . '!';
 $con=mysqli_connect("localhost","root","root","hackzurich");
 // Check connection
 if (mysqli_connect_errno()) {
@@ -30,9 +30,10 @@ if (mysqli_connect_errno()) {
 // escape variables for security
 $title = mysqli_real_escape_string($con, $_POST['title']);
 $link = mysqli_real_escape_string($con, $_POST['link']);
+$author = mysqli_real_escape_string($con, $_POST['userid']);
 
 $sql="INSERT INTO RESOURCES (title, link, AuthorId, Fingerprint)
-VALUES ('$title', '$link', '1','001100')";
+VALUES ('$title', '$link', '$author','001100')";
 
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
