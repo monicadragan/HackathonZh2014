@@ -16,7 +16,7 @@
 
 <body>
 
-<?php
+5,l<?php
 
 $query=$_POST["query"];
 
