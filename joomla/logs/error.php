@@ -21,3 +21,4 @@
 2014-07-14T13:38:01+00:00	INFO	joomlafailure	Empty password not allowed
 2014-10-10T22:20:36+00:00	INFO ::1	joomlafailure	Empty password not allowed
 2014-10-10T23:26:24+00:00	INFO ::1	joomlafailure	Empty password not allowed
+2014-10-10T23:36:46+00:00	INFO ::1	joomlafailure	Username and password do not match or you do not have an account yet.
