@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <form>
   <fields name="testprofile">
-    <fieldset name="testprofile"
+    <fieldset name="testprofile" addfieldpath="/administrator/components/com_users/models/fields"
       label="PLG_USER_TESTPROFILE_SLIDER_LABEL">
       <field
         name="organization"
@@ -14,6 +15,11 @@
     <option value="on">Onions</option>
     <option value="mush">Mushrooms</option>
 </field>
+
+<field name="myfield" type="chk" default="10" label="Select an article" query="SELECT id, title FROM b1978_content" key_field="id" value_field="title" required="true">
+<option value="">Please select your option</option>
+</field>
+
 <field name="myfile" type="filelist" default="" label="Select a file" description="" directory="administrator" filter="" exclude="" stripext="" />
 <field name="mylistvalue" type="groupedlist" default="" label="Select an option" description="">
   <group label="Group 1">
@@ -38,8 +44,5 @@
   <option value="1">2</option>
 </field>
 
-<field name="myfield" type="sql" default="10" label="Select an article" query="SELECT id, title FROM #__content" key_field="id" value_field="title" required="true">
-<option value="">Please select your option</option>
-</field>
   </fields>
 </form>
