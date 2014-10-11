@@ -1,129 +1,99 @@
--- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Oct 11, 2014 at 01:13 PM
--- Server version: 5.5.34
--- PHP Version: 5.3.10-1ubuntu3.9
+DELIMITER $$
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+CREATE FUNCTION `levenshtein`( s1 text, s2 text) RETURNS int(11)
+    DETERMINISTIC
+BEGIN 
+    DECLARE s1_len, s2_len, i, j, c, c_temp, cost INT; 
+    DECLARE s1_char CHAR; 
+    DECLARE cv0, cv1 text; 
+    SET s1_len = CHAR_LENGTH(s1), s2_len = CHAR_LENGTH(s2), cv1 = 0x00, j = 1, i = 1, c = 0; 
+    IF s1 = s2 THEN 
+      RETURN 0; 
+    ELSEIF s1_len = 0 THEN 
+      RETURN s2_len; 
+    ELSEIF s2_len = 0 THEN 
+      RETURN s1_len; 
+    ELSE 
+      WHILE j <= s2_len DO 
+        SET cv1 = CONCAT(cv1, UNHEX(HEX(j))), j = j + 1; 
+      END WHILE; 
+      WHILE i <= s1_len DO 
+        SET s1_char = SUBSTRING(s1, i, 1), c = i, cv0 = UNHEX(HEX(i)), j = 1; 
+        WHILE j <= s2_len DO 
+          SET c = c + 1; 
+          IF s1_char = SUBSTRING(s2, j, 1) THEN  
+            SET cost = 0; ELSE SET cost = 1; 
+          END IF; 
+          SET c_temp = CONV(HEX(SUBSTRING(cv1, j, 1)), 16, 10) + cost; 
+          IF c > c_temp THEN SET c = c_temp; END IF; 
+            SET c_temp = CONV(HEX(SUBSTRING(cv1, j+1, 1)), 16, 10) + 1; 
+            IF c > c_temp THEN  
+              SET c = c_temp;  
+            END IF; 
+            SET cv0 = CONCAT(cv0, UNHEX(HEX(c))), j = j + 1; 
+        END WHILE; 
+        SET cv1 = cv0, i = i + 1; 
+      END WHILE; 
+    END IF; 
+    RETURN c; 
+  END
+
+DELIMITER $$
+
+CREATE FUNCTION `levenshtein2`( s1 text, Array fruitArray) RETURNS int(11)
+    DETERMINISTIC
+BEGIN 
+
+	SET output = REPLACE(SUBSTRING(SUBSTRING_INDEX(text, ' ,.!?:;-', )
+                 , LENGTH(SUBSTRING_INDEX(x, delim, pos - 1)) + 1)
+                 , delim
+                 , '');
+
+    RETURN output;
+  END
+
+call String_Split("ana are mere"," ,.!?:;-")
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
---
--- Database: `interq`
---
 
--- --------------------------------------------------------
 
---
--- Table structure for table `COLINDE`
---
 
-CREATE TABLE IF NOT EXISTS `COLINDE` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NAME` varchar(200) NOT NULL,
-  `AUTHOR` varchar(1000) NOT NULL,
-  `PLACE` varchar(100) NOT NULL,
-  `YEAR` year(4) NOT NULL,
-  `TEXT` varchar(5000) NOT NULL,
-  `UPLOADED` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `AUDIO_FILE` varchar(100) NOT NULL,
-  `MUSIC_SHEET` varchar(100) NOT NULL,
-  `COMPOSER` varchar(100) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+DELIMITER $$
 
--- --------------------------------------------------------
+CREATE FUNCTION `levenshtein_string`(s1 text, vString text) RETURNS int(11)
+    DETERMINISTIC
+BEGIN 
+ 
+DECLARE vDone tinyint(1) DEFAULT 1;
+DECLARE vIndex INT DEFAULT 1;
+DECLARE minDistance INT DEFAULT 10000;
+DECLARE leviDistance INT;
+DECLARE vSubString VARCHAR(15);
+ 
+WHILE vDone > 0 DO
+  SET vSubString = SUBSTRING(vString, vIndex,
+                    IF(LOCATE(" ,.!?:;-", vString, vIndex) > 0,
+                      LOCATE(" ,.!?:;-", vString, vIndex) - vIndex,
+                      LENGTH(vString)
+                    ));
+  call debug_msg(@enabled, vSubString);
+  IF LENGTH(vSubString) > 0 THEN
+      SET vIndex = vIndex + LENGTH(vSubString) + 1;
+      SET leviDistance = levenshtein( s1, vSubString);
+      IF leviDistance < minDistance THEN 
+      	SET minDistance = leviDistance;
+      END IF;
+  ELSE
+      SET vDone = 0;
+  END IF;
 
---
--- Table structure for table `DOMAINS`
---
+END WHILE;
 
-CREATE TABLE IF NOT EXISTS `DOMAINS` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(1000) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+RETURN minDistance;
+ 
+END;
 
---
--- Dumping data for table `DOMAINS`
---
 
-INSERT INTO `DOMAINS` (`ID`, `Name`) VALUES
-(1, 'Computer science'),
-(2, 'Mathematics'),
-(3, 'Physics'),
-(4, 'Biology');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `EXAMS`
---
-
-CREATE TABLE IF NOT EXISTS `EXAMS` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(1000) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `RESOURCES`
---
-
-CREATE TABLE IF NOT EXISTS `RESOURCES` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Title` varchar(1000) NOT NULL,
-  `Link` varchar(1000) DEFAULT NULL,
-  `AuthorId` int(11) DEFAULT NULL,
-  `Fingerprint` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `RESOURCES`
---
-
-INSERT INTO `RESOURCES` (`ID`, `Title`, `Link`, `AuthorId`, `Fingerprint`) VALUES
-(1, 'Bernoulli distribution', 'http://www.statlect.com/Bernoulli_distribution.htm', 1, '110101'),
-(2, 'Expectation-maximization algorithm', 'http://www.nature.com/nbt/journal/v26/n8/full/nbt1406.html', 1, '110101'),
-(3, 'Visual receptive fields', 'http://www.sumanasinc.com/webcontent/animations/content/receptivefields.html', 2, '110101'),
-(4, 'Bipolar Cells', 'https://www.youtube.com/watch?v=1D_nIIevdzc ', 2, '110101'),
-(5, 'The Monty Hall Problem in Statistics', 'http://ed.ted.com/featured/PWb09pny', 3, '101001'),
-(6, 'A neural portrait of the human mind', 'http://www.ted.com/talks/nancy_kanwisher_the_brain_is_a_swiss_army_knife', 2, '101010'),
-(7, 'Normal distribution', 'http://www.statlect.com/ucdnrm1.htm', 1, '110101');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `UNIVERSITIES`
---
-
-CREATE TABLE IF NOT EXISTS `UNIVERSITIES` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(1000) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `UNIVERSITIES`
---
-
-INSERT INTO `UNIVERSITIES` (`ID`, `Name`) VALUES
-(1, 'EPFL'),
-(2, 'ETHZ'),
-(3, 'UPB'),
-(4, 'UniBo');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

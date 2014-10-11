@@ -94,13 +94,13 @@ CREATE TABLE IF NOT EXISTS `RESOURCES` (
 --
 
 INSERT INTO `RESOURCES` (`ID`, `Title`, `Link`, `AuthorId`, `Fingerprint`) VALUES
-(1, 'Bernoulli distribution', 'http://www.statlect.com/Bernoulli_distribution.htm', 1, '2, 3, 4, 5, 6'),
-(2, 'Expectation-maximization algorithm', 'http://www.nature.com/nbt/journal/v26/n8/full/nbt1406.html', 1, '12, 15, 30, 17, 2, 3, 4, 5, 6'),
-(3, 'Visual receptive fields', 'http://www.sumanasinc.com/webcontent/animations/content/receptivefields.html', 2, '101, 105, 147, 1, 2'),
-(4, 'Bipolar Cells', 'https://www.youtube.com/watch?v=1D_nIIevdzc ', 2, '12, 15, 30, 17, 2, 3, 4, 5, 6'),
-(5, 'The Monty Hall Problem in Statistics', 'http://ed.ted.com/featured/PWb09pny', 3, '12, 15, 30, 17, 2, 3, 4, 5, 6'),
-(6, 'A neural portrait of the human mind', 'http://www.ted.com/talks/nancy_kanwisher_the_brain_is_a_swiss_army_knife', 2, '101, 105, 147, 1, 2'),
-(7, 'Normal distribution', 'http://www.statlect.com/ucdnrm1.htm', 1, '2, 3, 4, 5, 6');
+(1, 'Bernoulli distribution', 'http://www.statlect.com/Bernoulli_distribution.htm', 1, '110101'),
+(2, 'Expectation-maximization algorithm', 'http://www.nature.com/nbt/journal/v26/n8/full/nbt1406.html', 1, '110101'),
+(3, 'Visual receptive fields', 'http://www.sumanasinc.com/webcontent/animations/content/receptivefields.html', 2, '110101'),
+(4, 'Bipolar Cells', 'https://www.youtube.com/watch?v=1D_nIIevdzc ', 2, '110101'),
+(5, 'The Monty Hall Problem in Statistics', 'http://ed.ted.com/featured/PWb09pny', 3, '101001'),
+(6, 'A neural portrait of the human mind', 'http://www.ted.com/talks/nancy_kanwisher_the_brain_is_a_swiss_army_knife', 2, '101010'),
+(7, 'Normal distribution', 'http://www.statlect.com/ucdnrm1.htm', 1, '110101');
 
 -- --------------------------------------------------------
 
