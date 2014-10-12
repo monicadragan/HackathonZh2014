@@ -6,12 +6,12 @@
     </title>
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/font-awesome-4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resources/bootstrap-3.2.0-dist/css/bootstrap.min.css">
 
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script> 
+    <script src="../resources/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/js/jquery.tablesorter.min.js"></script> 
 
   </head>
 
@@ -22,6 +22,8 @@
 // Parse the query
 
 $query=$_POST["query"];
+
+$author = mysqli_real_escape_string($con, $_POST['userid']);
 
 
 function in_arrayi($needle, $haystack) {
@@ -54,7 +56,7 @@ if(!$db)
 	die("Insucces.");
 }
 
-mysql_select_db("interq");
+mysql_select_db("hackzurich");
 if(mysql_errno())
 {
 	die("<BR>" . mysql_errno().":".mysqlerror()."<BR>");
@@ -91,12 +93,18 @@ $num=mysql_num_rows($result);
 <?php
 
 
+
+$sql="SELECT * FROM `b1978_user_profiles` where user_id=$author and profile_key='testprofile.courses'";
+$res=mysqli_query($con,$sql);
+$row=mysqli_fetch_array($res);
+$fingerprint=mysql_real_escape_string($row['profile_value']);
+
 // Sort table lines accordin to the profile
 $user_profile = "101, 147, 1, 2, 214, 2, 3, 4, 12, 200, 201, 202";
 
 // parse user's profile
 $exams_user = array();
-$delim = ' ,.!?:;-';
+$delim = ' ,.!?:;-\'';
 $tok = strtok($user_profile, $delim);
 array_push($exams_user, $tok);
 while ($tok != false) {
