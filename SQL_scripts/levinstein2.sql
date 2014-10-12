@@ -1,6 +1,6 @@
 DELIMITER $$
 
-CREATE FUNCTION `levenshtein_string`( string text, query text) RETURNS int(11)
+CREATE FUNCTION `levenshtein_string`( string text, query text) RETURNS FLOAT
     DETERMINISTIC
 BEGIN 
  
@@ -8,7 +8,9 @@ DECLARE vDone tinyint(1) DEFAULT 1;
 DECLARE oDone tinyint(1) DEFAULT 1;
 DECLARE vIndex INT DEFAULT 1;
 DECLARE oIndex INT DEFAULT 1;
-DECLARE minDistance INT DEFAULT 10000;
+DECLARE minDistance FLOAT DEFAULT 10000;
+DECLARE aux1 FLOAT;
+DECLARE aux2 FLOAT;
 
 DECLARE average FLOAT DEFAULT 0;
 DECLARE cnt INT DEFAULT 0;
@@ -40,16 +42,29 @@ WHILE oDone > 0 DO
 	  IF LENGTH(vSubString) > 0 THEN
 	      SET vIndex = vIndex + LENGTH(vSubString) + 1;
 	      SET leviDistance = levenshtein(oSubString, vSubString);
-	#      IF(LENGTH(oSubString) > LENGTH(vSubString))
+
+	#      IF LENGTH(oSubString) > LENGTH(vSubString)
 	#	  SET average = average + leviDistance / LENGTH(oSubString);
 	#	  SET cnt  = cnt  + 1;
 	#      ELSE
 	#	  SET average = average + leviDistance / LENGTH(vSubString);
 	#	  SET cnt  = cnt  + 1;
-	#      END IF
-	      IF leviDistance < minDistance THEN 
-	      	SET minDistance = leviDistance;
+	#      END IF;
+
+	      SET aux1 = leviDistance / LENGTH(oSubString);
+	      SET aux2 = leviDistance / LENGTH(vSubString);
+
+	      IF LENGTH(oSubString) > LENGTH(vSubString) THEN
+	      	IF aux1 < minDistance THEN 
+	      		SET minDistance = aux1;
+	      	END IF;
+	      ELSE
+	      	IF leviDistance < minDistance THEN 
+	      		SET minDistance = aux2;
+	      	END IF;
 	      END IF;
+
+
 	      #INSERT INTO levi VALUES (oSubString, vSubString, leviDistance, minDistance, oIndex, vIndex);
 	  ELSE
 	      SET vDone = 0;
@@ -63,7 +78,7 @@ WHILE oDone > 0 DO
 END WHILE;
 
 #average = average / cnt;
-RETURN minDistance;
+RETURN 1 - minDistance;
  
 END;
 
